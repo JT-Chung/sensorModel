@@ -1,5 +1,5 @@
 <template>
-  <el-card shadow="hover" body-style="padding-top: 15px; padding-bottom: 15px">
+  <el-card shadow="hover">
     <el-checkbox v-model="jumpOverObstacles.obstacles" size="large" style="display:block;line-height: 40px">
       <el-icon size="20" style="vertical-align: bottom"><WarningFilled /></el-icon>
       <span v-spacing-left="8" style="font-size: 16px;color: #303133">越障</span>

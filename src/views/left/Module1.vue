@@ -15,7 +15,7 @@
       <el-slider v-model="crawling.slider"/>
     </div>
     <div>
-      <el-radio-group v-model="crawling.tabs">
+      <el-radio-group v-model="crawling.tabs" >
         <el-radio-button label="前" />
         <el-radio-button label="后" />
         <el-radio-button label="左" />
