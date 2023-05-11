@@ -1,35 +1,35 @@
 <template>
-  <el-card shadow="hover" class="container">
+  <el-card shadow="hover" class="container" :body-style="store.calcCardPadding">
     <div v-spacing-bottom>
       <span>A卷扬机</span>
       <div style="padding-top: 5px">
-        <el-radio-group v-model="hoist.A">
-          <el-radio-button label="自动" />
-          <el-radio-button label="停" />
-          <el-radio-button label="收" />
-          <el-radio-button label="放" />
+        <el-radio-group v-model="store.aWinchCtr">
+          <el-radio-button :label="3">&nbsp;&nbsp;自动&nbsp;</el-radio-button>
+          <el-radio-button :label="0">&nbsp;停&nbsp;&nbsp;</el-radio-button>
+          <el-radio-button :label="1">&nbsp;收&nbsp;</el-radio-button>
+          <el-radio-button :label="2">&nbsp;放&nbsp;</el-radio-button>
         </el-radio-group>
       </div>
     </div>
     <div v-spacing-bottom>
       <span>理线</span>
       <div style="padding-top: 5px">
-        <el-radio-group v-model="hoist.cableManagement">
-          <el-radio-button label="自动" />
-          <el-radio-button label="停" />
-          <el-radio-button label="向左" />
-          <el-radio-button label="向右" />
+        <el-radio-group v-model="store.aWinchNeatenCtr">
+          <el-radio-button :label="0">&nbsp;自动&nbsp;</el-radio-button>
+          <el-radio-button :label="3">&nbsp;停&nbsp;</el-radio-button>
+          <el-radio-button :label="1">&nbsp;向左&nbsp;</el-radio-button>
+          <el-radio-button :label="2">&nbsp;向右&nbsp;</el-radio-button>
         </el-radio-group>
       </div>
     </div>
     <div>
       <span>B卷扬机</span>
       <div style="padding-top: 5px">
-        <el-radio-group v-model="hoist.B">
-          <el-radio-button label="自动" />
-          <el-radio-button label="停" />
-          <el-radio-button label="收" />
-          <el-radio-button label="放" />
+        <el-radio-group v-model="store.bWinchCtr">
+          <el-radio-button :label="3">&nbsp;自动&nbsp;</el-radio-button>
+          <el-radio-button :label="0">&nbsp;停&nbsp;</el-radio-button>
+          <el-radio-button :label="1">&nbsp;收&nbsp;</el-radio-button>
+          <el-radio-button :label="2">&nbsp;放&nbsp;</el-radio-button>
         </el-radio-group>
       </div>
     </div>
@@ -37,13 +37,9 @@
 </template>
 
 <script setup>
-import {reactive} from "vue";
+import { useStore } from "../../store/index.js";
 
-let hoist = reactive({
-  A: '自动',
-  B: '自动',
-  cableManagement: '自动'
-})
+const store = useStore()
 </script>
 
 <style scoped>

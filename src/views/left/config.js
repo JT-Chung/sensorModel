@@ -1,4 +1,4 @@
-export const crawlingOptions = [
+export const carVelocityOptions = [
     {
         label: '0 m/min',
         value: 0
@@ -50,7 +50,7 @@ export const crawlingOptions = [
     },
 ]
 
-export const preOptions = [
+export const frontPressureSetOptions = [
     {
         label: '0 %',
         value: 0
@@ -87,7 +87,7 @@ export const preOptions = [
     },
 ]
 
-export const postOptions = [...preOptions]
+export const backPressureSetOptions = [...frontPressureSetOptions]
 
 export const cleaningFluidOptions = [
     {

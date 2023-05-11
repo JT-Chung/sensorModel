@@ -1,46 +1,46 @@
 <template>
-  <el-card shadow="hover">
-    <el-checkbox v-model="jumpOverObstacles.obstacles" size="large" style="display:block;line-height: 40px">
-      <el-icon size="20" style="vertical-align: bottom"><WarningFilled /></el-icon>
-      <span v-spacing-left="8" style="font-size: 16px;color: #303133">越障</span>
-    </el-checkbox>
-    <el-space v-spacing-bottom>
+  <el-card shadow="hover" :body-style="store.calcCardPadding">
+    <div class="radio-group">
+      <input type="radio" id="0x04" value="0x04" name="carRunMode" :checked="store.carRunMode === '0x04'" @click="store.onCarRunModeChanged">
+      <label for="0x04">越障</label>
+    </div>
+    <el-space v-spacing-bottom alignment="left">
       <div>
-        <span class="label">前模组长度：</span>
-        <el-input v-model="jumpOverObstacles.frontLength" input-style="width: 50px" placeholder="请输入"/>
+        <div class="label" v-spacing-bottom>前模组长度：</div>
+        <el-input-number v-model="store.crossAbstacleDis1" placeholder="请输入前模组长度" :min="0"/>
       </div>
-      <div v-spacing-left="18">
-        <span class="label">后模组长度：</span>
-        <el-input v-model="jumpOverObstacles.rearLength" input-style="width: 50px" placeholder="请输入"/>
+      <div>
+        <div class="label" v-spacing-bottom>后模组长度：</div>
+        <el-input-number v-model="store.crossAbstacleDis2" placeholder="请输入后模组长度" :min="0"/>
       </div>
     </el-space>
     <div v-spacing-bottom="5">前模组升/降：</div>
     <div v-spacing-bottom>
-      <el-radio-group v-model="moduleLifting.front">
-        <el-radio-button label="停" />
-        <el-radio-button label="升" />
-        <el-radio-button label="降" />
+      <el-radio-group v-model="store.frontLifterCmd">
+        <el-radio-button :label="0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;停&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</el-radio-button>
+        <el-radio-button :label="1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;升&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</el-radio-button>
+        <el-radio-button :label="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;降&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</el-radio-button>
       </el-radio-group>
     </div>
     <div v-spacing-bottom="5">后模组升/降：</div>
     <div v-spacing-bottom>
-      <el-radio-group v-model="moduleLifting.rear">
-        <el-radio-button label="停" />
-        <el-radio-button label="升" />
-        <el-radio-button label="降" />
+      <el-radio-group v-model="store.backLifterCmd">
+        <el-radio-button :label="0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;停&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</el-radio-button>
+        <el-radio-button :label="1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;升&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</el-radio-button>
+        <el-radio-button :label="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;降&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</el-radio-button>
       </el-radio-group>
     </div>
     <el-space>
       <span>升/降限位：</span>
       <span>
           前
-          <el-checkbox v-model="LiftingLimit.front"  size="large" text-color="#13950a" fill="#13950a">
+          <el-checkbox v-model="store.frontDownlimitSta"  size="large" text-color="#13950a" fill="#13950a" :true-label="0" :false-label="1">
             <el-icon size="20" style="vertical-align: bottom"><SuccessFilled /></el-icon>
           </el-checkbox>
       </span>
       <span>
           后
-          <el-checkbox v-model="LiftingLimit.rear"  size="large" text-color="#13950a" fill="#13950a">
+          <el-checkbox v-model="store.backDownlimitSta"  size="large" text-color="#13950a" fill="#13950a" :true-label="0" :false-label="1">
             <el-icon size="20" style="vertical-align: bottom"><SuccessFilled /></el-icon>
           </el-checkbox>
         </span>
@@ -49,26 +49,55 @@
 </template>
 
 <script setup>
-import {reactive} from "vue";
+import { useStore } from "../../store/index.js";
 import {SuccessFilled,WarningFilled} from "@element-plus/icons-vue";
 
-const jumpOverObstacles = reactive({
-  obstacles: null,
-  frontLength: null,
-  rearLength: null
-})
-const moduleLifting = reactive({
-  front: '停',
-  rear: '停',
-})
-const LiftingLimit = reactive({
-  front: null,
-  rear: null
-})
+const store = useStore()
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 .label {
   white-space: nowrap;
+}
+.radio-group {
+  position: relative;
+  line-height: 30px;
+input[type="radio"] {
+  height: 22px;
+  width: 22px;
+  margin-right: 10px;
+  display: none;
+}
+input[type="radio"] + label::before {
+  content: "\a0"; /*不换行空格*/
+  display: inline-block;
+  vertical-align: middle;
+  font-size: 18px;
+  width: 18px;
+  height: 18px;
+  margin-right: 10px;
+  border-radius: 50%;
+  border: 1px solid #003c66;
+  background: #fff;
+  line-height: 22px;
+  box-sizing: border-box;
+}
+input[type="radio"]:checked + label::before {
+  background-color: #d23535;
+  background-clip: content-box;
+  padding: 3px;
+}
+input:checked+label::after {
+  position: absolute;
+  content: '';
+  width: 4px;
+  height: 4px;
+  top: 12px;
+  left: 6px;
+  border: 2px solid #fff;
+  border-top: none;
+  border-left: none;
+  transform: rotate(45deg);
+}
 }
 </style>

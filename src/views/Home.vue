@@ -13,9 +13,19 @@
 </template>
 
 <script setup>
+import { useStore } from "../store/index.js";
 import Left from "./left/Index.vue"
 import Right from "./right/Index.vue"
 import Content from "./content/Index.vue"
+
+const store = useStore()
+
+store.$subscribe((mutation, state) => {
+  //如果数据发生改动 发送数据包并缓存数据到本地
+  store.sendCmd(state)
+  localStorage.setItem('store', JSON.stringify(state))
+})
+
 </script>
 
 <style lang="scss" scoped>

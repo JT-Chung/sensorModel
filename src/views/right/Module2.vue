@@ -1,78 +1,108 @@
 <template>
-  <el-card shadow="hover">
-    <div>运行模式：</div>
-    <div v-spacing-bottom>
-      <span>
-        急停
-        <el-checkbox v-model="operatingMode.emergencyStop"  size="large" text-color="#13950a" fill="#13950a">
-          <el-icon size="20" style="vertical-align: bottom"><WarningFilled /></el-icon>
-        </el-checkbox>
-      </span>
-      <span v-spacing-left>
-          手动
-          <el-checkbox v-model="operatingMode.manual"  size="large">
-            <el-icon size="20" style="vertical-align: bottom"><WarningFilled /></el-icon>
-          </el-checkbox>
-      </span>
-      <span v-spacing-left>
-          强制
-          <el-checkbox v-model="operatingMode.mandatory"  size="large">
-            <el-icon size="20" style="vertical-align: bottom"><WarningFilled /></el-icon>
-          </el-checkbox>
-        </span>
+  <el-card shadow="hover" :body-style="store.getCardBodyStyle">
+    <div v-spacing-bottom>运行模式：</div>
+    <el-space v-spacing-bottom :size="30">
+      <div class="radio-group">
+        <input type="radio" id="0x00" value="0x00" name="carRunMode" :checked="store.carRunMode === '0x00'" @click="store.onCarRunModeChanged">
+        <label for="0x00">急停</label>
+      </div>
+      <div class="radio-group">
+        <input type="radio" id="0x01" value="0x01" name="carRunMode" :checked="store.carRunMode === '0x01'" @click="store.onCarRunModeChanged">
+        <label for="0x01">手动</label>
+      </div>
+      <div class="radio-group">
+        <input type="radio" id="0x06" value="0x06" name="carRunMode" :checked="store.carRunMode === '0x06'" @click="store.onCarRunModeChanged">
+        <label for="0x06">强制</label>
+      </div>
+    </el-space>
+    <div>
+      <div class="radio-group">
+        <input type="radio" id="0x03" value="0x03" name="carRunMode" :checked="store.carRunMode === '0x03'" @click="store.onCarRunModeChanged">
+        <label for="0x03">延边模式</label>
+      </div>
+      <el-space v-spacing-bottom alignment="left">
+        <div>
+          <span>距离：</span>
+          <el-input-number v-model="store.HuggingSideDis" placeholder="请输入距离" :min="0"/>
+        </div>
+        <div>
+          <span style="line-height: 32px">已清洗：</span>
+          <span>{{store.RemainHuggingSidePercent}}</span>
+        </div>
+      </el-space>
     </div>
-
-    <el-checkbox v-model="yanbianModel.yanbian" size="large" style="display: block;line-height: 40px">
-      <el-icon size="20" style="vertical-align: bottom"><WarningFilled /></el-icon>
-      <span v-spacing-left="8" style="font-size: 16px;color: #303133">延边模式</span>
-    </el-checkbox>
-    <el-space v-spacing-bottom>
-      <span>距离：</span>
-      <el-input v-model="yanbianModel.distance" input-style="width: 80px" placeholder="请输入距离"/>
-      <span v-spacing-left="50">已清洗：</span>
-      <span>{{yanbianModel.cleaned}}</span>
-    </el-space>
-
-    <el-checkbox v-model="zhiModel.zhi" size="large" style="display: block; line-height: 40px">
-      <el-icon size="20" style="vertical-align: bottom"><WarningFilled /></el-icon>
-      <span style="font-size: 16px;color: #303133">“之”字清洗模式</span>
-    </el-checkbox>
-    <el-space>
-      <div>
-        <span class="label">横向距离：</span>
-        <el-input v-model="zhiModel.horizontal" input-style="width: 65px" placeholder="请输入"/>
+    <div>
+      <div class="radio-group">
+        <input type="radio" id="0x05" value="0x05" name="carRunMode" :checked="store.carRunMode === '0x05'" @click="store.onCarRunModeChanged">
+        <label for="0x05">"之"子模式</label>
       </div>
-      <div v-spacing-left="20">
-        <span class="label">纵向距离：</span>
-        <el-input v-model="zhiModel.portrait" input-style="width: 65px" placeholder="请输入"/>
-      </div>
-    </el-space>
+      <el-space alignment="left" direction="vertical">
+        <el-space>
+          <span class="label">横向距离:</span>
+          <el-input-number v-model="store.autoMoveLevelDis" placeholder="请输入" :min="0"/>
+        </el-space>
+        <el-space>
+          <span class="label">纵向距离:</span>
+          <el-input-number v-model="store.autoMoveVerticalDis" placeholder="请输入" :min="0"/>
+        </el-space>
+      </el-space>
+    </div>
   </el-card>
 </template>
 
 <script setup>
-import {reactive} from "vue";
-import {WarningFilled} from "@element-plus/icons-vue";
+import { useStore } from "../../store/index.js";
 
-const operatingMode = reactive({
-  emergencyStop: null,
-  manual: null,
-  mandatory: null
-})
-const yanbianModel = reactive({
-  yanbian: null,
-  distance: null,
-  cleaned: '68%'
-})
-const zhiModel = reactive({
-  zhi: null,
-  horizontal: null,
-  portrait: null
-})
+const store = useStore()
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 .label {
   white-space: nowrap;
 }
+.el-radio.el-radio--large {
+  height: 30px;
+}
+.radio-group {
+  position: relative;
+  line-height: 30px;
+  input[type="radio"] {
+    height: 22px;
+    width: 22px;
+    margin-right: 10px;
+    display: none;
+  }
+  input[type="radio"] + label::before {
+    content: "\a0"; /*不换行空格*/
+    display: inline-block;
+    vertical-align: middle;
+    font-size: 18px;
+    width: 18px;
+    height: 18px;
+    margin-right: 10px;
+    border-radius: 50%;
+    border: 1px solid #003c66;
+    background: #fff;
+    line-height: 22px;
+    box-sizing: border-box;
+  }
+  input[type="radio"]:checked + label::before {
+    background-color: #d23535;
+    background-clip: content-box;
+    padding: 3px;
+  }
+  input:checked+label::after {
+    position: absolute;
+    content: '';
+    width: 4px;
+    height: 4px;
+    top: 12px;
+    left: 6px;
+    border: 2px solid #fff;
+    border-top: none;
+    border-left: none;
+    transform: rotate(45deg);
+  }
+}
+
 </style>

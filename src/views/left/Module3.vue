@@ -1,15 +1,15 @@
 <template>
-  <el-card shadow="hover">
+  <el-card shadow="hover" :body-style="store.getCardBodyStyle">
     <el-space v-spacing-bottom>
       <span class="label">前滚刷：</span>
-      <el-switch v-model="rollerBrush.front" />
+      <el-switch v-model="store.frontBrushCtr" :active-value="1" :inactive-value="0"/>
       <span v-spacing-left>后滚刷：</span>
-      <el-switch v-model="rollerBrush.back" />
+      <el-switch v-model="store.rearBrushCtr" :active-value="1" :inactive-value="0"/>
     </el-space>
     <el-space v-spacing-bottom>
       <span class="label">前清洗液：</span>
       <span>开</span>
-      <el-select v-model="cleaningFluid.preOpen" placeholder="请选择">
+      <el-select v-model="store.frontValveOpenTime" placeholder="请选择">
         <el-option
             v-for="item in cleaningFluidOptions"
             :key="item.value"
@@ -18,7 +18,7 @@
         />
       </el-select>
       <span>关</span>
-      <el-select v-model="cleaningFluid.preClose" placeholder="请选择">
+      <el-select v-model="store.frontValveCloseTime" placeholder="请选择">
         <el-option
             v-for="item in cleaningFluidOptions"
             :key="item.value"
@@ -30,7 +30,7 @@
     <el-space v-spacing-bottom>
       <span class="label">后清洗液：</span>
       <span>开</span>
-      <el-select v-model="cleaningFluid.postOpen" placeholder="请选择">
+      <el-select v-model="store.backValveOpenTime" placeholder="请选择">
         <el-option
             v-for="item in cleaningFluidOptions"
             :key="item.value"
@@ -39,7 +39,7 @@
         />
       </el-select>
       <span>关</span>
-      <el-select v-model="cleaningFluid.postClose" placeholder="请选择">
+      <el-select v-model="store.backValveCloseTime" placeholder="请选择">
         <el-option
             v-for="item in cleaningFluidOptions"
             :key="item.value"
@@ -50,26 +50,16 @@
     </el-space>
     <el-space>
       <span class="label">边刷：</span>
-      <el-switch v-model="rollerBrush.sideBrush" />
+      <el-switch v-model="store.brushCtr" :active-value="1" :inactive-value="0"/>
     </el-space>
   </el-card>
 </template>
 
 <script setup>
-import {reactive} from "vue";
+import { useStore } from "../../store/index.js";
 import {cleaningFluidOptions} from "./config.js"
 
-let rollerBrush = reactive({
-  front: null,
-  back: null,
-  sideBrush: null
-})
-let cleaningFluid = reactive({
-  preOpen: null,
-  preClose: null,
-  postOpen: null,
-  postClose: null,
-})
+const store = useStore()
 </script>
 
 <style scoped>
