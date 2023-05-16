@@ -1,5 +1,5 @@
 <template>
-  <el-card shadow="hover" :body-style="store.getCardBodyStyle">
+  <el-card shadow="hover" :body-style="echo.getCardBodyStyle">
     <el-space v-spacing-bottom>
       <span class="label">前滚刷：</span>
       <el-switch v-model="store.frontBrushCtr" :active-value="1" :inactive-value="0"/>
@@ -57,9 +57,11 @@
 
 <script setup>
 import { useStore } from "../../store/index.js";
+import { useEcho } from "../../store/echo.js";
 import {cleaningFluidOptions} from "./config.js"
 
 const store = useStore()
+const echo = useEcho()
 </script>
 
 <style scoped>

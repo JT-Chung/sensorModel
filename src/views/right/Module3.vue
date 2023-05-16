@@ -1,17 +1,17 @@
 <template>
-  <el-card shadow="hover" :body-style="store.calcCardPadding">
+  <el-card shadow="hover" :body-style="echo.calcCardPadding">
     <div class="radio-group">
-      <input type="radio" id="0x04" value="0x04" name="carRunMode" :checked="store.carRunMode === '0x04'" @click="store.onCarRunModeChanged">
+      <input type="radio" id="0x04" value="4" name="carRunMode" :checked="store.carRunMode == 4" @click="store.onCarRunModeChanged">
       <label for="0x04">越障</label>
     </div>
     <el-space v-spacing-bottom alignment="left">
       <div>
-        <div class="label" v-spacing-bottom>前模组长度：</div>
-        <el-input-number v-model="store.crossAbstacleDis1" placeholder="请输入前模组长度" :min="0"/>
+        <div class="label" v-spacing-bottom>前模组长度(mm)：</div>
+        <el-input-number v-model="store.crossAbstacleDis1" placeholder="请输入前模组长度" :step="echo.accuracy" :min="0"/>
       </div>
       <div>
-        <div class="label" v-spacing-bottom>后模组长度：</div>
-        <el-input-number v-model="store.crossAbstacleDis2" placeholder="请输入后模组长度" :min="0"/>
+        <div class="label" v-spacing-bottom>后模组长度(mm)：</div>
+        <el-input-number v-model="store.crossAbstacleDis2" placeholder="请输入后模组长度" :step="echo.accuracy" :min="0"/>
       </div>
     </el-space>
     <div v-spacing-bottom="5">前模组升/降：</div>
@@ -34,15 +34,15 @@
       <span>升/降限位：</span>
       <span>
           前
-          <el-checkbox v-model="store.frontDownlimitSta"  size="large" text-color="#13950a" fill="#13950a" :true-label="0" :false-label="1">
-            <el-icon size="20" style="vertical-align: bottom"><SuccessFilled /></el-icon>
-          </el-checkbox>
+          <el-icon size="20" style="vertical-align: bottom;padding-left: 5px" :color="echo.frontDownlimitSta === 0 ? '#13950a' : '#d23535'">
+            <CircleCheckFilled />
+          </el-icon>
       </span>
       <span>
           后
-          <el-checkbox v-model="store.backDownlimitSta"  size="large" text-color="#13950a" fill="#13950a" :true-label="0" :false-label="1">
-            <el-icon size="20" style="vertical-align: bottom"><SuccessFilled /></el-icon>
-          </el-checkbox>
+          <el-icon size="20" style="vertical-align: bottom;padding-left: 5px" :color="echo.backDownlimitSta === 0 ? '#13950a' : '#d23535'">
+            <CircleCheckFilled />
+          </el-icon>
         </span>
     </el-space>
   </el-card>
@@ -50,9 +50,11 @@
 
 <script setup>
 import { useStore } from "../../store/index.js";
-import {SuccessFilled,WarningFilled} from "@element-plus/icons-vue";
+import { useEcho } from "../../store/echo.js";
+import {CircleCheckFilled} from "@element-plus/icons-vue";
 
 const store = useStore()
+const echo = useEcho()
 </script>
 
 <style scoped lang="scss">

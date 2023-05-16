@@ -1,10 +1,18 @@
 <template>
   <div>
-    <el-space style="margin: 2px 2px 2px" :size="60">
+    <el-space style="margin: 5px 5px 5px">
       <el-button type="danger" @click="onIPVSClk">视频监控</el-button>
       <el-button type="danger" @click="onResetClk">重置</el-button>
+      <el-select v-model="echo.accuracy" placeholder="精度选择">
+        <el-option
+            v-for="item in accuracy"
+            :key="item.value"
+            :label="item.label"
+            :value="item.value"
+        />
+      </el-select>
     </el-space>
-    <el-card shadow="hover" :body-style="store.calcCardPadding">
+    <el-card shadow="hover" :body-style="echo.calcCardPadding">
       <el-space v-spacing-bottom>
         <span>算法</span>
         <el-switch v-model="store.cameraPNCLAlgorithmEn" :active-value="1" :inactive-value="0"/>
@@ -17,7 +25,7 @@
           <el-radio :label="0"><span style="font-size: 16px">非垂直模式</span></el-radio>
         </el-radio-group>
         <div class="radio-group">
-          <input type="radio" id="0x09" value="0x09" name="carRunMode" :checked="store.carRunMode === '0x09'" @click="store.onCarRunModeChanged">
+          <input type="radio" id="0x09" value="9" name="carRunMode" :checked="store.carRunMode == 9" @click="store.onCarRunModeChanged">
           <label for="0x09">校准</label>
         </div>
       </el-space>
@@ -27,8 +35,11 @@
 
 <script setup>
 import { useStore } from "../../store/index.js";
+import {useEcho} from "../../store/echo.js";
+import {accuracy} from "./config.js";
 
 const store = useStore()
+const echo = useEcho()
 const onIPVSClk = () => {
   window.play()
 }

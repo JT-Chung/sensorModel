@@ -3,50 +3,53 @@ export const carVelocityOptions = [
         label: '0 m/min',
         value: 0
     },{
+        label: '0.5 m/min',
+        value: 500
+    },{
         label: '1.0 m/min',
-        value: 1.0
+        value: 1000
     },{
         label: '1.5 m/min',
-        value: 1.5
+        value: 1500
     },{
         label: '2.0 m/min',
-        value: 2.0
+        value: 2000
     },{
         label: '2.5 m/min',
-        value: 2.5
+        value: 2500
     },{
         label: '3.0 m/min',
-        value: 3.0
+        value: 3000
     },{
         label: '3.5 m/min',
-        value: 3.5
+        value: 3500
     },{
         label: '4.0 m/min',
-        value: 4.0
+        value: 4000
     },{
         label: '4.5 m/min',
-        value: 4.5
+        value: 4500
     },{
         label: '5.0 m/min',
-        value: 5.0
+        value: 5000
     },{
         label: '5.5 m/min',
-        value: 5.5
+        value: 5500
     },{
         label: '6.0 m/min',
-        value: 6.0
+        value: 6000
     },{
         label: '6.5 m/min',
-        value: 6.5
+        value: 6500
     },{
         label: '7.0 m/min',
-        value: 7.0
+        value: 7000
     },{
         label: '7.5 m/min',
-        value: 7.5
+        value: 7500
     },{
         label: '8.0 m/min',
-        value: 8.0
+        value: 8000
     },
 ]
 

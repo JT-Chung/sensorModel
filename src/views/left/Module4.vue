@@ -1,5 +1,5 @@
 <template>
-  <el-card shadow="hover" class="container" :body-style="store.calcCardPadding">
+  <el-card shadow="hover" class="container">
     <div v-spacing-bottom>
       <span>A卷扬机</span>
       <div style="padding-top: 5px">
@@ -38,8 +38,10 @@
 
 <script setup>
 import { useStore } from "../../store/index.js";
+import { useEcho } from "../../store/echo.js";
 
 const store = useStore()
+const echo = useEcho()
 </script>
 
 <style scoped>

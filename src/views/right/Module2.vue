@@ -3,47 +3,47 @@
     <div v-spacing-bottom>运行模式：</div>
     <el-space v-spacing-bottom :size="30">
       <div class="radio-group">
-        <input type="radio" id="0x00" value="0x00" name="carRunMode" :checked="store.carRunMode === '0x00'" @click="store.onCarRunModeChanged">
+        <input type="radio" id="0x00" value="0" name="carRunMod" :checked="store.carRunMode == 0" @click="store.onCarRunModeChanged">
         <label for="0x00">急停</label>
       </div>
       <div class="radio-group">
-        <input type="radio" id="0x01" value="0x01" name="carRunMode" :checked="store.carRunMode === '0x01'" @click="store.onCarRunModeChanged">
+        <input type="radio" id="0x01" value="1" name="carRunMode" :checked="store.carRunMode == 1" @click="store.onCarRunModeChanged">
         <label for="0x01">手动</label>
       </div>
       <div class="radio-group">
-        <input type="radio" id="0x06" value="0x06" name="carRunMode" :checked="store.carRunMode === '0x06'" @click="store.onCarRunModeChanged">
+        <input type="radio" id="0x06" value="6" name="carRunMode" :checked="store.carRunMode == 6" @click="store.onCarRunModeChanged">
         <label for="0x06">强制</label>
       </div>
     </el-space>
     <div>
       <div class="radio-group">
-        <input type="radio" id="0x03" value="0x03" name="carRunMode" :checked="store.carRunMode === '0x03'" @click="store.onCarRunModeChanged">
+        <input type="radio" id="0x03" value="3" name="carRunMode" :checked="store.carRunMode == 3" @click="store.onCarRunModeChanged">
         <label for="0x03">延边模式</label>
       </div>
       <el-space v-spacing-bottom alignment="left">
         <div>
-          <span>距离：</span>
-          <el-input-number v-model="store.HuggingSideDis" placeholder="请输入距离" :min="0"/>
+          <span>延边距离：</span>
+          <el-input-number v-model="store.HuggingSideDis" placeholder="请输入距离" :step="echo.accuracy" :min="0" @blur="onBLur"/>
         </div>
         <div>
           <span style="line-height: 32px">已清洗：</span>
-          <span>{{store.RemainHuggingSidePercent}}</span>
+          <span>{{echo.RemainHuggingSidePercent}}</span>
         </div>
       </el-space>
     </div>
     <div>
       <div class="radio-group">
-        <input type="radio" id="0x05" value="0x05" name="carRunMode" :checked="store.carRunMode === '0x05'" @click="store.onCarRunModeChanged">
+        <input type="radio" id="0x05" value="5" name="carRunMode" :checked="store.carRunMode == 5" @click="store.onCarRunModeChanged">
         <label for="0x05">"之"子模式</label>
       </div>
       <el-space alignment="left" direction="vertical">
         <el-space>
           <span class="label">横向距离:</span>
-          <el-input-number v-model="store.autoMoveLevelDis" placeholder="请输入" :min="0"/>
+          <el-input-number v-model="store.autoMoveLevelDis" placeholder="请输入" :step="echo.accuracy" :min="0"/>
         </el-space>
         <el-space>
           <span class="label">纵向距离:</span>
-          <el-input-number v-model="store.autoMoveVerticalDis" placeholder="请输入" :min="0"/>
+          <el-input-number v-model="store.autoMoveVerticalDis" placeholder="请输入" :step="echo.accuracy" :min="0"/>
         </el-space>
       </el-space>
     </div>
@@ -52,8 +52,13 @@
 
 <script setup>
 import { useStore } from "../../store/index.js";
+import { useEcho } from "../../store/echo.js";
 
 const store = useStore()
+const echo = useEcho()
+const onBLur = (val) => {
+  // console.log('val:', val)
+}
 </script>
 
 <style scoped lang="scss">
