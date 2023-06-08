@@ -23,10 +23,10 @@
         压强：{{echo.frontPressure * 10}}&nbsp;pa
       </div>
       <div>
-        <template v-if="store.adsorbPressureSta == 0">
+        <template v-if="echo.adsorbPressureSta === 0">
           <el-icon size="20px"><SuccessFilled color="#13950a"/></el-icon>
         </template>
-        <template v-if="store.adsorbPressureSta == 1 || store.adsorbPressureSta == 3">
+        <template v-if="echo.adsorbPressureSta == 1 || echo.adsorbPressureSta == 3">
           <el-icon size="20px"><CircleCloseFilled color="#d74d4d"/></el-icon>
         </template>
       </div>
@@ -56,10 +56,10 @@
         压强：{{echo.backPressure * 10}} &nbsp;pa
       </span>
       <div>
-        <template v-if="store.adsorbPressureSta == 0">
+        <template v-if="echo.adsorbPressureSta == 0">
           <el-icon size="20px"><SuccessFilled color="#13950a"/></el-icon>
         </template>
-        <template v-if="store.adsorbPressureSta == 2 || store.adsorbPressureSta == 3">
+        <template v-if="echo.adsorbPressureSta == 2 || echo.adsorbPressureSta == 3">
           <el-icon size="20px"><CircleCloseFilled color="#d74d4d"/></el-icon>
         </template>
       </div>

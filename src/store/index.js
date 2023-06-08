@@ -130,9 +130,9 @@ export const useStore = defineStore('store', {
                 decToHex(param.cameraRGBAlgorithmEn,2) +
                 decToHex(param.loraCtrl,2)
 
-            const len = cmd.length / 2 + 2;
-            // 下行命令消息  + "5F5F"
-            cmd = "AA55" + decToHex(len, 2) + "30" + cmd + "0xaa55"
+            const len = cmd.length / 2 + 4;
+
+            cmd = "AA55" + decToHex(len, 2) + "30" + cmd + "5F5F"
             // webview定制化开发的js方法, 通过底层串口下发命令
             window.sendCmd && window.sendCmd(cmd);
         }
