@@ -3,21 +3,21 @@
     <div v-spacing-bottom>运行模式：</div>
     <el-space v-spacing-bottom :size="30">
       <div class="radio-group">
-        <input type="radio" id="0x00" value="0" name="carRunMod" :checked="store.carRunMode == 0" @click="store.onCarRunModeChanged">
+        <input type="radio" id="0x00" value="0" name="carRunMode"  v-model.number="echo.carRunMode" @click="store.onCarRunModeChanged">
         <label for="0x00">急停</label>
       </div>
       <div class="radio-group">
-        <input type="radio" id="0x01" value="1" name="carRunMode" :checked="store.carRunMode == 1" @click="store.onCarRunModeChanged">
+        <input type="radio" id="0x01" value="1" name="carRunMode" v-model.number="echo.carRunMode" @click="store.onCarRunModeChanged">
         <label for="0x01">手动</label>
       </div>
       <div class="radio-group">
-        <input type="radio" id="0x06" value="6" name="carRunMode" :checked="store.carRunMode == 6" @click="store.onCarRunModeChanged">
+        <input type="radio" id="0x06" value="6" name="carRunMode" v-model.number="echo.carRunMode" @click="store.onCarRunModeChanged">
         <label for="0x06">强制</label>
       </div>
     </el-space>
     <div>
       <div class="radio-group">
-        <input type="radio" id="0x03" value="3" name="carRunMode" :checked="store.carRunMode == 3" @click="store.onCarRunModeChanged">
+        <input type="radio" id="0x03" value="3" name="carRunMode" v-model.number="echo.carRunMode" @click="store.onCarRunModeChanged">
         <label for="0x03">延边模式</label>
       </div>
       <el-space v-spacing-bottom alignment="left">
@@ -33,7 +33,7 @@
     </div>
     <div>
       <div class="radio-group">
-        <input type="radio" id="0x05" value="5" name="carRunMode" :checked="store.carRunMode == 5" @click="store.onCarRunModeChanged">
+        <input type="radio" id="0x05" value="5" name="carRunMode" v-model.number="echo.carRunMode" @click="store.onCarRunModeChanged">
         <label for="0x05">"之"子模式</label>
       </div>
       <el-space alignment="left" direction="vertical">
@@ -56,6 +56,7 @@ import { useEcho } from "../../store/echo.js";
 
 const store = useStore()
 const echo = useEcho()
+
 const onBLur = (val) => {
   // console.log('val:', val)
 }

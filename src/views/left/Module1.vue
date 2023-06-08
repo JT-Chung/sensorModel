@@ -12,7 +12,7 @@
       </el-select>
     </el-space>
     <div v-spacing-bottom>
-      <el-slider v-model="carVelocity" @change="store.carVelocity = carVelocity" :max="8000" :step="500"/>
+      <el-slider v-model="store.carVelocity" :max="8000" :step="500"/>
     </div>
     <div>
       <el-space>
@@ -60,14 +60,6 @@ import {CircleCheckFilled} from "@element-plus/icons-vue";
 
 const store = useStore()
 const echo = useEcho()
-
-let carVelocity = ref()
-
-store.$subscribe((mutation, state) => {
-  if (mutation.events.key === 'carVelocity') {
-    carVelocity.value = mutation.events.newValue
-  }
-})
 </script>
 
 <style scoped>

@@ -1,7 +1,7 @@
 <template>
   <el-card shadow="hover" :body-style="echo.calcCardPadding">
     <div class="radio-group">
-      <input type="radio" id="0x04" value="4" name="carRunMode" :checked="store.carRunMode == 4" @click="store.onCarRunModeChanged">
+      <input type="radio" id="0x04" value="4" name="carRunMode" v-model.number="echo.carRunMode" @click="store.onCarRunModeChanged">
       <label for="0x04">越障</label>
     </div>
     <el-space v-spacing-bottom alignment="left">

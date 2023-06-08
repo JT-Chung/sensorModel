@@ -50,7 +50,7 @@
     </el-space>
     <el-space>
       <span class="label">边刷：</span>
-      <el-switch v-model="store.brushCtr" :active-value="1" :inactive-value="0"/>
+      <el-switch v-model="store.sideBrushCtr" :active-value="1" :inactive-value="0"/>
     </el-space>
   </el-card>
 </template>

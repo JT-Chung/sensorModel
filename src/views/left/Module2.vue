@@ -4,7 +4,7 @@
       <span class="label">
         前吸附：
       </span>
-      <el-select v-model="store.frontPressureSet" placeholder="请选择">
+      <el-select v-model="echo.frontPressureSet" placeholder="请选择" @change="store.onFrontPressureSetChanged">
         <el-option
             v-for="item in frontPressureSetOptions"
             :key="item.value"
@@ -15,12 +15,12 @@
       <span>{{echo.frontMotorSpeed}}&nbsp;rpm</span>
     </el-space>
     <div v-spacing-bottom>
-      <el-slider v-model="frontPressureSet" @change="store.frontPressureSet = frontPressureSet" :step="10"/>
+      <el-slider v-model="echo.frontPressureSet" @change="store.onFrontPressureSetChanged" :step="100" :max="1000"/>
     </div>
 
     <div v-spacing-bottom style="display: flex; justify-content: space-between">
       <div class="label">
-        吸力：{{echo.frontPressure}}&nbsp;
+        压强：{{echo.frontPressure * 10}}&nbsp;pa
       </div>
       <div>
         <template v-if="store.adsorbPressureSta == 0">
@@ -36,7 +36,7 @@
       <span class="label">
         后吸附：
       </span>
-      <el-select v-model="store.backPressureSet" placeholder="请选择"   >
+      <el-select v-model="echo.backPressureSet" @change="store.onBackPressureSetChanged" placeholder="请选择">
         <el-option
             v-for="item in backPressureSetOptions"
             :key="item.value"
@@ -48,12 +48,12 @@
     </el-space>
 
     <div v-spacing-bottom>
-      <el-slider v-model="backPressureSet" @change="store.backPressureSet = backPressureSet" :step="10"/>
+      <el-slider v-model="echo.backPressureSet" @change="store.onBackPressureSetChanged" :step="100" :max="1000"/>
     </div>
 
     <div v-spacing-bottom style="display: flex; justify-content: space-between">
       <span class="label">
-        吸力：{{echo.backPressure}} &nbsp;pa
+        压强：{{echo.backPressure * 10}} &nbsp;pa
       </span>
       <div>
         <template v-if="store.adsorbPressureSta == 0">
@@ -68,7 +68,6 @@
 </template>
 
 <script setup>
-import {ref} from "vue";
 import { useStore } from "../../store/index.js";
 import { useEcho } from "../../store/echo.js";
 import {frontPressureSetOptions,backPressureSetOptions} from "./config.js"
@@ -76,17 +75,6 @@ import {SuccessFilled,CircleCloseFilled} from "@element-plus/icons-vue";
 
 const store = useStore()
 const echo = useEcho()
-let frontPressureSet = ref(store.frontPressureSet)
-let backPressureSet = ref(store.backPressureSet)
-
-store.$subscribe((mutation, state) => {
-  if (mutation.events.key === 'frontPressureSet') {
-    frontPressureSet.value = mutation.events.newValue
-  }
-  if (mutation.events.key === 'backPressureSet') {
-    backPressureSet.value = mutation.events.newValue
-  }
-})
 </script>
 
 <style scoped>

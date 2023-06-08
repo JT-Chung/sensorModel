@@ -39,20 +39,20 @@
   <el-card shadow="hover" :body-style="echo.calcCardPadding">
     <ul class="desc">
       <li>
-        <div><span>A旋转杆：</span> <span>{{echo.aAngle}}°</span></div>
-        <div><span>B旋转杆：</span> <span>{{echo.bAngle}}°</span></div>
-        <div><span>前模组姿态：</span> <span>{{echo.frontCarAngle}}°</span></div>
-        <div><span>后模组姿态：</span> <span>{{echo.rearCarAngle}}°</span></div>
+        <div><span>A旋转杆：</span> <span>{{echo.aAngle / 10}}°</span></div>
+        <div><span>B旋转杆：</span> <span>{{echo.bAngle / 10}}°</span></div>
+        <div><span>前模组姿态：</span> <span>{{echo.frontCarAngle / 10}}°</span></div>
+        <div><span>后模组姿态：</span> <span>{{echo.rearCarAngle / 10}}°</span></div>
       </li>
       <li>
-        <div><span>超声距离左：</span> <span>{{echo.leftCollision}}&nbsp;mm</span></div>
-        <div><span>超声距离右：</span> <span>{{echo.rightCollision}}&nbsp;mm</span></div>
+        <div><span>超声距离左：</span> <span>{{echo.leftCollisionDis}}&nbsp;mm</span></div>
+        <div><span>超声距离右：</span> <span>{{echo.rightCollisionDis}}&nbsp;mm</span></div>
         <div><span>算法高度：</span> <span>{{echo.abstacleHight}}&nbsp;mm</span></div>
         <div><span>算法距离：</span> <span>{{echo.abstacleDis}}&nbsp;mm</span></div>
       </li>
       <li>
         <div><span>电量：</span> <span>{{echo.betteryLevel}}</span></div>
-        <div><span>水压：</span> <span>{{echo.hydroPump}}&nbsp;Pa</span></div>
+        <div><span>水压：</span> <span>{{echo.hydroPumpPressure}}&nbsp;Pa</span></div>
       </li>
     </ul>
   </el-card>

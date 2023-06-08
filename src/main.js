@@ -140,7 +140,7 @@ window.updateDeviceData = function (data) {
     //右延边角度传感器实时角度
     info.ArmWheelRightAngle = hexToDec(data.substring(40, 42))
     //剩余未走完的延边距离(单位%)
-    info.RemainHuggingSidepercent = hexToDec(data.substring(42, 46))
+    info.huggingSidePercent = hexToDec(data.substring(42, 46))
     //点云算法使能(PNCL: point cloud), 0: 禁止  1: 使能
     info.cameraPNCLAlgorithmEn = hexToDec(data.substring(46, 48))
     //RGB算法使能, 0: 禁止  1: 使能
@@ -154,47 +154,30 @@ window.updateDeviceData = function (data) {
     //后升降限位状态（0：触发 1:未触发）
     info.backDownlimitSta = hexToDec(data.substring(60, 62))
     //前左碰撞超声距离(mm)
-    info.leftCollision = hexToDec(data.substring(62, 66))
+    info.leftCollisionDis = hexToDec(data.substring(62, 66))
     //前右碰撞超声距离(mm)
-    info.rightCollision = hexToDec(data.substring(66, 70))
+    info.rightCollisionDis = hexToDec(data.substring(66, 70))
 
-    /* 负压电机相关 */
-    info.frontPressure = hexToDec(data.substring(70, 74))
+    //前负压设定值（0 - 1000 对应 0-100%)
+    info.frontPressureSet = hexToDec(data.substring(70, 74))
+    //后负压设定值（0 - 1000 对应 0-100%）
+    info.backPressureSet = hexToDec(data.substring(74, 78))
+    //前负压吸力采集值（Pa-帕） 27 - 28
+    info.frontPressure = hexToDec(data.substring(78, 82))
     //后负压吸力采集值（Pa-帕）
-    info.backPressure = hexToDec(data.substring(74, 78))
+    info.backPressure = hexToDec(data.substring(82, 86))
     //前负压电机转速
-    info.frontMotorSpeed = hexToDec(data.substring(78, 82))
+    info.frontMotorSpeed = hexToDec(data.substring(86, 90))
     //后负压电机转速
-    info.backMotorSpeed = hexToDec(data.substring(82, 86))
+    info.backMotorSpeed = hexToDec(data.substring(90, 94))
     //水压值（Pa-帕）
-    info.hydroPump = hexToDec(data.substring(86, 90))
+    info.hydroPumpPressure = hexToDec(data.substring(94, 98))
     //a旋转杆角度（单位：度 - 放大10倍处理）
-    info.aAngle = hexToDec(data.substring(90, 94),true)
+    info.aAngle = hexToDec(data.substring(98, 102),true)
     //b旋转杆角度（单位：度 - 放大10倍处理）
-    info.bAngle = hexToDec(data.substring(94, 98),true)
+    info.bAngle = hexToDec(data.substring(102, 106),true)
 
     //合并到state内
     echo.$patch(info)
 
-    //判断是否存在下行消息 如果存在 存储至store。todo
-    if (info.verticalMode !== null) {
-        if (info.verticalMode != store.verticalMode) {
-            store.verticalMode = info.verticalMode
-        }
-    }
-    if (info.carRunMode !== null) {
-        if (info.carRunMode != store.carRunMode) {
-            store.carRunMode = info.carRunMode
-        }
-    }
-    if (info.cameraPNCLAlgorithmEn !== null) {
-        if (info.cameraPNCLAlgorithmEn != store.cameraPNCLAlgorithmEn) {
-            store.cameraPNCLAlgorithmEn = info.cameraPNCLAlgorithmEn
-        }
-    }
-    if (info.cameraRGBAlgorithmEn !== null) {
-        if (info.cameraRGBAlgorithmEn != store.cameraRGBAlgorithmEn) {
-            store.cameraRGBAlgorithmEn = info.cameraRGBAlgorithmEn
-        }
-    }
 }

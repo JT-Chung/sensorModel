@@ -59,34 +59,34 @@ export const frontPressureSetOptions = [
         value: 0
     },{
         label: '10 %',
-        value: 10
+        value: 100
     },{
         label: '20 %',
-        value: 20
+        value: 200
     },{
         label: '30 %',
-        value: 30
+        value: 300
     },{
         label: '40 %',
-        value: 40
+        value: 400
     },{
         label: '50 %',
-        value: 50
+        value: 500
     },{
         label: '60 %',
-        value: 60
+        value: 600
     },{
         label: '70 %',
-        value: 70
+        value: 700
     },{
         label: '80 %',
-        value: 80
+        value: 800
     },{
         label: '90 %',
-        value: 90
+        value: 900
     },{
         label: '100 %',
-        value: 100
+        value: 1000
     },
 ]
 
