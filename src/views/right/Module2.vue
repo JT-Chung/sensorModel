@@ -22,12 +22,8 @@
       </div>
       <el-space v-spacing-bottom alignment="left">
         <div>
-          <span>延边距离：</span>
+          <span>延边距离(mm)：</span>
           <el-input-number v-model="store.HuggingSideDis" placeholder="请输入距离" :step="echo.accuracy" :min="0" @blur="onBLur"/>
-        </div>
-        <div>
-          <span style="line-height: 32px">已清洗：</span>
-          <span>{{echo.RemainHuggingSidePercent}}</span>
         </div>
       </el-space>
     </div>
@@ -38,12 +34,12 @@
       </div>
       <el-space alignment="left" direction="vertical">
         <el-space>
-          <span class="label">横向距离:</span>
-          <el-input-number v-model="store.autoMoveLevelDis" placeholder="请输入" :step="echo.accuracy" :min="0"/>
+          <span class="label">横向距离(m):</span>
+          <el-input-number style="margin-left: 18px" v-model="store.autoMoveLevelDis" placeholder="请输入" :step="echo.accuracy" :min="0"/>
         </el-space>
         <el-space>
-          <span class="label">纵向距离:</span>
-          <el-input-number v-model="store.autoMoveVerticalDis" placeholder="请输入" :step="echo.accuracy" :min="0"/>
+          <span class="label">纵向距离(cm):</span>
+          <el-input-number style="margin-left: 10px" v-model="store.autoMoveVerticalDis" placeholder="请输入" :step="echo.accuracy" :min="0"/>
         </el-space>
       </el-space>
     </div>

@@ -1,21 +1,21 @@
 export const accuracy = [
     {
-        label: '1 mm',
+        label: '1 step',
         value: 1
     },    {
-        label: '10 mm',
+        label: '5 step',
+        value: 5
+    },    {
+        label: '10 step',
         value: 10
     },    {
-        label: '50 mm',
+        label: '20 step',
+        value: 20
+    },    {
+        label: '50 step',
         value: 50
     },    {
-        label: '100 mm',
+        label: '100 step',
         value: 100
-    },    {
-        label: '500 mm',
-        value: 500
-    },    {
-        label: '1000 mm',
-        value: 1000
     },
 ]
