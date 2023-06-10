@@ -2,7 +2,7 @@
   <el-card shadow="hover" :body-style="echo.getCardBodyStyle">
     <el-space v-spacing-bottom>
       <span>爬行速度：</span>
-      <el-select v-model="store.carVelocity" placeholder="请选择" style="width: 150px">
+      <el-select v-model="store.carVelocity" placeholder="请选择" style="width: 150px" @change="onCarVelocityChanged">
         <el-option
             v-for="item in carVelocityOptions"
             :key="item.value"
@@ -12,7 +12,7 @@
       </el-select>
     </el-space>
     <div v-spacing-bottom>
-      <el-slider v-model="store.carVelocity" :max="8000" :step="500"/>
+      <el-slider v-model="carVelocity" :max="8000" :step="500" @change="store.onCarVelocityChanged"/>
     </div>
     <div>
       <el-space>
@@ -60,6 +60,12 @@ import {CircleCheckFilled} from "@element-plus/icons-vue";
 
 const store = useStore()
 const echo = useEcho()
+
+let carVelocity = ref()
+
+const onCarVelocityChanged = (val) => {
+  carVelocity.value = val
+}
 </script>
 
 <style scoped>

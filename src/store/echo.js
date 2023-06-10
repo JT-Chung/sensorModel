@@ -13,7 +13,7 @@ export const useEcho = defineStore('echo', {
         rearModuleCommSta: 1, //后模组通信状态(0: OK, 1：断开) <回显>
         rk3399CommSta: 1, //算法CPU通信状态(0: OK, 1：断开) <回显>
 
-        RemainHuggingSidePercent: 0, //已清洗 <回显>
+        HuggingSidePercent: 0, //已清洗 <回显>
         frontDownlimitSta: 1, //前升降限位状态（0：触发 1:未触发） <回显>
         backDownlimitSta: 1, //后升降限位状态（0：触发 1:未触发） <回显>
 
@@ -26,16 +26,14 @@ export const useEcho = defineStore('echo', {
         //b5: 后模组-左后向 碰撞(0:正常 1:碰撞)
         //b6: 后模组-右侧向 碰撞(0:正常 1:碰撞)
         //b7: 后模组-右后向 碰撞(0:正常 1:碰撞)
-        collisionSta: {
-            b0: '0',
-            b1: '0',
-            b2: '0',
-            b3: '0',
-            b4: '0',
-            b5: '0',
-            b6: '0',
-            b7: '0',
-        },
+        collisionStaB0: '0',
+        collisionStaB1: '0',
+        collisionStaB2: '0',
+        collisionStaB3: '0',
+        collisionStaB4: '0',
+        collisionStaB5: '0',
+        collisionStaB6: '0',
+        collisionStaB7: '0',
         aAngle: 0, //a旋转杆角度（单位：度 - 放大10倍处理） <回显>
         bAngle: 0, //b旋转杆角度（单位：度 - 放大10倍处理） <回显>
         leftCollisionDis: 0, //前左碰撞超声距离(mm) <回显>
@@ -64,8 +62,59 @@ export const useEcho = defineStore('echo', {
         accuracy: 1,
         //屏幕可视高度
         availHeight: window.screen.availHeight,
+        //状态
+        succeed: { color: '#1684fc' },
+        error: { color: '#d23535' }
     }),
     getters: {
+        getUltrasonicCollisionStaLeft(state) {
+            switch (state.ultrasonicCollisionSta) {
+                case 0:
+                    return state.succeed
+                case 1:
+                    return state.error
+                case 2:
+                    return state.succeed
+                case 3:
+                    return state.error
+            }
+        },
+        getUltrasonicCollisionStaRight(state) {
+            switch (state.ultrasonicCollisionSta) {
+                case 0:
+                    return state.succeed
+                case 1:
+                    return state.succeed
+                case 2:
+                    return state.error
+                case 3:
+                    return state.error
+            }
+        },
+        getCliffStaLeft(state) {
+            switch (state.cliffSta) {
+                case 0:
+                    return state.succeed
+                case 1:
+                    return state.error
+                case 2:
+                    return state.succeed
+                case 3:
+                    return state.error
+            }
+        },
+        getCliffStaRight(state) {
+            switch (state.cliffSta) {
+                case 0:
+                    return state.succeed
+                case 1:
+                    return state.succeed
+                case 2:
+                    return state.error
+                case 3:
+                    return state.error
+            }
+        },
         getCardBodyStyle(state) {
             if (state.availHeight === 800) return
             return {

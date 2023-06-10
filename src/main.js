@@ -15,7 +15,6 @@
 import { createApp } from 'vue'
 import "normalize.css"
 import { createPinia } from "pinia";
-import { useStore } from "./store/index.js"
 import { useEcho } from "./store/echo.js";
 import App from './App.vue'
 
@@ -43,7 +42,6 @@ Vue.directive('spacing-bottom', {
 Vue.use(pinia).mount('#app')
 
 /* 串口通信库 */
-const store = useStore()
 const echo = useEcho()
 //转换成小端模式
 function toLittleEndianStr(hexStr) {
@@ -111,18 +109,18 @@ window.updateDeviceData = function (data) {
     //电池电量
     info.betteryLevel = hexToDec(data.substring(22, 24))
     /* 传感器状态 */
-    const collisionSta = hexToBin(hexToDec(data.substring(24, 26)))
+    const collisionSta = hexToBin(data.substring(24, 26))
     if (collisionSta && collisionSta.length === 8) {
-        info.collisionSta = {}
-        info.collisionSta.b0 = collisionSta[0]
-        info.collisionSta.b1 = collisionSta[1]
-        info.collisionSta.b2 = collisionSta[2]
-        info.collisionSta.b3 = collisionSta[3]
-        info.collisionSta.b4 = collisionSta[4]
-        info.collisionSta.b5 = collisionSta[5]
-        info.collisionSta.b6 = collisionSta[6]
-        info.collisionSta.b7 = collisionSta[7]
+        info.collisionStaB0 = collisionSta[7]
+        info.collisionStaB1 = collisionSta[6]
+        info.collisionStaB2 = collisionSta[5]
+        info.collisionStaB3 = collisionSta[4]
+        info.collisionStaB4 = collisionSta[3]
+        info.collisionStaB5 = collisionSta[2]
+        info.collisionStaB6 = collisionSta[1]
+        info.collisionStaB7 = collisionSta[0]
     }
+
     //超声碰撞状态（0：正常 1：左碰撞 2：右碰撞 3：左右碰撞）
     info.ultrasonicCollisionSta = hexToDec(data.substring(26, 28))
     //超声悬崖状态（0：正常 1：左悬崖 2：右悬崖 3：左右悬崖）
@@ -140,7 +138,7 @@ window.updateDeviceData = function (data) {
     //右延边角度传感器实时角度
     info.ArmWheelRightAngle = hexToDec(data.substring(40, 42))
     //剩余未走完的延边距离(单位%)
-    info.huggingSidePercent = hexToDec(data.substring(42, 46))
+    info.HuggingSidePercent = hexToDec(data.substring(42, 46))
     //点云算法使能(PNCL: point cloud), 0: 禁止  1: 使能
     info.cameraPNCLAlgorithmEn = hexToDec(data.substring(46, 48))
     //RGB算法使能, 0: 禁止  1: 使能
@@ -177,6 +175,7 @@ window.updateDeviceData = function (data) {
     //b旋转杆角度（单位：度 - 放大10倍处理）
     info.bAngle = hexToDec(data.substring(102, 106),true)
 
+    console.log('接收', info)
     //合并到state内
     echo.$patch(info)
 

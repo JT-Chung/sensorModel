@@ -2,18 +2,18 @@
   <el-card shadow="hover" :body-style="echo.getCardBodyStyle">
     <b class="title">传感器状态</b>
     <div class="sensor-status">
-      <el-icon :size="sensorStatusIconSize" class="ss1" :style="sensorStatusIconStyle(echo.collisionSta.b1)"><HelpFilled /></el-icon>
-      <el-icon :size="sensorStatusIconSize" class="ss2" :style="sensorStatusIconStyle(echo.ultrasonicCollisionSta)"><HelpFilled /></el-icon>
-      <el-icon :size="sensorStatusIconSize" class="ss3" :style="sensorStatusIconStyle(echo.collisionSta.b0)"><HelpFilled /></el-icon>
-      <el-icon :size="sensorStatusIconSize" class="ss4" :style="sensorStatusIconStyle(echo.cliffSta)"><HelpFilled /></el-icon>
-      <el-icon :size="sensorStatusIconSize" class="ss5" :style="sensorStatusIconStyle(echo.collisionSta.b3)"><HelpFilled /></el-icon>
-      <el-icon :size="sensorStatusIconSize" class="ss6" :style="sensorStatusIconStyle(echo.ultrasonicCollisionSta)"><HelpFilled /></el-icon>
-      <el-icon :size="sensorStatusIconSize" class="ss7" :style="sensorStatusIconStyle(echo.collisionSta.b2)"><HelpFilled /></el-icon>
-      <el-icon :size="sensorStatusIconSize" class="ss8" :style="sensorStatusIconStyle(echo.cliffSta)"><HelpFilled /></el-icon>
-      <el-icon :size="sensorStatusIconSize" class="ss9" :style="sensorStatusIconStyle(echo.collisionSta.b4)"><HelpFilled /></el-icon>
-      <el-icon :size="sensorStatusIconSize" class="ss10" :style="sensorStatusIconStyle(echo.collisionSta.b5)"><HelpFilled /></el-icon>
-      <el-icon :size="sensorStatusIconSize" class="ss11" :style="sensorStatusIconStyle(echo.collisionSta.b6)"><HelpFilled /></el-icon>
-      <el-icon :size="sensorStatusIconSize" class="ss12" :style="sensorStatusIconStyle(echo.collisionSta.b7)"><HelpFilled /></el-icon>
+      <el-icon :size="sensorStatusIconSize" class="ss1" :style="echo.collisionStaB1 === '0' ? {color: '#1684fc'} : {color: '#d23535'}"><HelpFilled /></el-icon>
+      <el-icon :size="sensorStatusIconSize" class="ss2" :style="echo.getUltrasonicCollisionStaLeft"><HelpFilled /></el-icon>
+      <el-icon :size="sensorStatusIconSize" class="ss3" :style="echo.collisionStaB0 === '0' ? {color: '#1684fc'} : {color: '#d23535'}"><HelpFilled /></el-icon>
+      <el-icon :size="sensorStatusIconSize" class="ss4" :style="echo.getCliffStaLeft"><HelpFilled /></el-icon>
+      <el-icon :size="sensorStatusIconSize" class="ss5" :style="echo.collisionStaB3 === '0' ? {color: '#1684fc'} : {color: '#d23535'}"><HelpFilled /></el-icon>
+      <el-icon :size="sensorStatusIconSize" class="ss6" :style="echo.getUltrasonicCollisionStaRight"><HelpFilled /></el-icon>
+      <el-icon :size="sensorStatusIconSize" class="ss7" :style="echo.collisionStaB2 === '0' ? {color: '#1684fc'} : {color: '#d23535'}"><HelpFilled /></el-icon>
+      <el-icon :size="sensorStatusIconSize" class="ss8" :style="echo.getCliffStaRight"><HelpFilled /></el-icon>
+      <el-icon :size="sensorStatusIconSize" class="ss9" :style="echo.collisionStaB4 === '0' ? {color: '#1684fc'} : {color: '#d23535'}"><HelpFilled /></el-icon>
+      <el-icon :size="sensorStatusIconSize" class="ss10" :style="echo.collisionStaB5 === '0' ? {color: '#1684fc'} : {color: '#d23535'}"><HelpFilled /></el-icon>
+      <el-icon :size="sensorStatusIconSize" class="ss11" :style="echo.collisionStaB6 === '0' ? {color: '#1684fc'} : {color: '#d23535'}"><HelpFilled /></el-icon>
+      <el-icon :size="sensorStatusIconSize" class="ss12" :style="echo.collisionStaB7 === '0' ? {color: '#1684fc'} : {color: '#d23535'}"><HelpFilled /></el-icon>
 
       <b class="sensor-status-text-left">{{echo.ArmWheelLeftAngle}}度</b>
       <b class="sensor-status-text-right">{{echo.ArmWheelRightAngle}}度</b>
@@ -39,10 +39,10 @@
   <el-card shadow="hover" :body-style="echo.calcCardPadding">
     <ul class="desc">
       <li>
-        <div><span>A旋转杆：</span> <span>{{echo.aAngle / 10}}°</span></div>
-        <div><span>B旋转杆：</span> <span>{{echo.bAngle / 10}}°</span></div>
-        <div><span>前模组姿态：</span> <span>{{echo.frontCarAngle / 10}}°</span></div>
-        <div><span>后模组姿态：</span> <span>{{echo.rearCarAngle / 10}}°</span></div>
+        <div><span>A旋转杆：</span> <span>{{echo.aAngle}}°</span></div>
+        <div><span>B旋转杆：</span> <span>{{echo.bAngle}}°</span></div>
+        <div><span>前模组姿态：</span> <span>{{echo.frontCarAngle}}°</span></div>
+        <div><span>后模组姿态：</span> <span>{{echo.rearCarAngle}}°</span></div>
       </li>
       <li>
         <div><span>超声距离左：</span> <span>{{echo.leftCollisionDis}}&nbsp;mm</span></div>
@@ -51,8 +51,9 @@
         <div><span>算法距离：</span> <span>{{echo.abstacleDis}}&nbsp;mm</span></div>
       </li>
       <li>
-        <div><span>电量：</span> <span>{{echo.betteryLevel}}</span></div>
+        <div><span>电量：</span> <span>{{echo.betteryLevel}}&nbsp;% </span></div>
         <div><span>水压：</span> <span>{{echo.hydroPumpPressure}}&nbsp;Pa</span></div>
+        <div><span>已清洗：</span> <span>{{echo.HuggingSidePercent}}&nbsp;% </span></div>
       </li>
     </ul>
   </el-card>
@@ -67,7 +68,6 @@ const store = useStore()
 const echo = useEcho()
 
 const sensorStatusIconSize = 30
-const sensorStatusIconStyle = (val) => val === '0' ? {color: '#1684fc'} : {color: '#d23535'}
 
 const onYBChanged = (event) => {
   store.HuggingSideDir = parseInt(event.target.value)
