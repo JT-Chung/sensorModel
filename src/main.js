@@ -175,7 +175,6 @@ window.updateDeviceData = function (data) {
     //b旋转杆角度（单位：度 - 放大10倍处理）
     info.bAngle = hexToDec(data.substring(102, 106),true)
 
-    console.log('接收', info)
     //合并到state内
     echo.$patch(info)
 

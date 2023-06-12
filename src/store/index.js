@@ -16,7 +16,7 @@ export const useStore = defineStore('store', {
         sideBrushCtr: 0, //边刷控制(0:关 1：开)
 
         aWinchCtr: 0, //a卷扬机控制（0：停 1：收 2：放 3：自动）
-        aWinchNeatenCtr: 3, //a卷扬机理线器控制（0：自动 1：左 2：右 3：停）
+        aWinchNeatenCtr: 3, //a卷扬机理线器控制（3：自动 1：左 2：右 0：停）
         bWinchCtr: 0, //b卷扬机控制（0：停 1：收 2：放 3：自动）
 
         /*
@@ -46,8 +46,8 @@ export const useStore = defineStore('store', {
         verticalMode: 0, //垂面模式（0-非垂面模式，1-垂面模式）
 
         //延边方向(自动延边=1时，设置无效):
-        //  0：顺时针右边，  1： 顺时针下边，  3：顺时针上边，
-        //  4：逆时针下边，  5： 逆时针左边，  6：逆时针上边，
+        //  4：顺时针右边，  1： 顺时针下边，  3：顺时针上边，
+        //  5：逆时针下边，  8： 逆时针左边，  7：逆时针上边，
         HuggingSideDir: 0,
 
         //升降电机高度(mm) 界面不展示
@@ -135,7 +135,6 @@ export const useStore = defineStore('store', {
                 decToHex(param.cameraRGBAlgorithmEn,2) +
                 decToHex(param.loraCtrl,2)
 
-            console.log('send', param)
             const len = cmd.length / 2 + 4;
             cmd = "AA55" + decToHex(len, 2) + "30" + cmd + "5F5F"
             // webview定制化开发的js方法, 通过底层串口下发命令

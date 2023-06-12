@@ -27,12 +27,12 @@
   <el-card style="position: relative" shadow="hover" :body-style="echo.getCardBodyStyle">
     <span>延边方向选择：</span>
     <div class="yanbian-bgc">
-      <input  type="radio" name="HuggingSideDir" id="HuggingSideDir0" :value="0" class="yb0" @click="onYBChanged" :checked="store.HuggingSideDir === 0">
+      <input  type="radio" name="HuggingSideDir" id="HuggingSideDir0" :value="4" class="yb0" @click="onYBChanged" :checked="store.HuggingSideDir === 4">
       <input  type="radio" name="HuggingSideDir" id="HuggingSideDir1" :value="1" class="yb1" @click="onYBChanged" :checked="store.HuggingSideDir === 1">
       <input  type="radio" name="HuggingSideDir" id="HuggingSideDir3" :value="3" class="yb3" @click="onYBChanged" :checked="store.HuggingSideDir === 3">
-      <input  type="radio" name="HuggingSideDir" id="HuggingSideDir4" :value="4" class="yb4" @click="onYBChanged" :checked="store.HuggingSideDir === 4">
-      <input  type="radio" name="HuggingSideDir" id="HuggingSideDir5" :value="5" class="yb5" @click="onYBChanged" :checked="store.HuggingSideDir === 5">
-      <input  type="radio" name="HuggingSideDir" id="HuggingSideDir6" :value="6" class="yb6" @click="onYBChanged" :checked="store.HuggingSideDir === 6">
+      <input  type="radio" name="HuggingSideDir" id="HuggingSideDir4" :value="5" class="yb4" @click="onYBChanged" :checked="store.HuggingSideDir === 5">
+      <input  type="radio" name="HuggingSideDir" id="HuggingSideDir5" :value="8" class="yb5" @click="onYBChanged" :checked="store.HuggingSideDir === 8">
+      <input  type="radio" name="HuggingSideDir" id="HuggingSideDir6" :value="7" class="yb6" @click="onYBChanged" :checked="store.HuggingSideDir === 7">
     </div>
   </el-card>
 
