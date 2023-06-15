@@ -17,7 +17,7 @@
       <span>{{echo.frontMotorSpeed}}&nbsp;rpm</span>
     </div>
     <div v-spacing-bottom>
-      <el-slider v-model="echo.frontPressureSet" @change="store.onFrontPressureSetChanged" :step="100" :max="1000"/>
+      <el-slider v-model="echo.frontPressureSet" @change="store.onFrontPressureSetChanged" @input="echo.onFrontPressureSetInput" :step="100" :max="1000"/>
     </div>
 
     <div v-spacing-bottom style="display: flex; justify-content: space-between">
@@ -52,7 +52,7 @@
     </div>
 
     <div v-spacing-bottom>
-      <el-slider v-model="echo.backPressureSet" @change="store.onBackPressureSetChanged" :step="100" :max="1000"/>
+      <el-slider v-model="echo.backPressureSet" @change="store.onBackPressureSetChanged" @input="echo.onBackPressureSetInput" :step="100" :max="1000"/>
     </div>
 
     <div v-spacing-bottom style="display: flex; justify-content: space-between">

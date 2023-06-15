@@ -15,9 +15,9 @@
     <el-card shadow="hover" :body-style="echo.calcCardPadding">
       <el-space v-spacing-bottom>
         <span>算法</span>
-        <el-switch v-model="echo.cameraPNCLAlgorithmEn" :active-value="1" :inactive-value="0" @change="store.onCameraPNCLAlgorithmEnChanged"/>
+        <el-switch v-model="store.cameraPNCLAlgorithmEn" :active-value="1" :inactive-value="0" />
         <span v-spacing-left="2">RGB相机</span>
-        <el-switch v-model="echo.cameraRGBAlgorithmEn" :active-value="1" :inactive-value="0" @change="store.onCameraRGBAlgorithmEnChanged"/>
+        <el-switch v-model="store.cameraRGBAlgorithmEn" :active-value="1" :inactive-value="0" />
         <span v-spacing-left="2">后通信</span>
         <el-switch v-model="store.loraCtrl" :active-value="1" :inactive-value="0"></el-switch>
       </el-space>

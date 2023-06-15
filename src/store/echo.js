@@ -64,7 +64,10 @@ export const useEcho = defineStore('echo', {
         availHeight: window.screen.availHeight,
         //状态
         succeed: { color: '#1684fc' },
-        error: { color: '#d23535' }
+        error: { color: '#d23535' },
+        //fix: 滑动条数据与上行消息冲突问题
+        backPressureSetFlag: false,
+        frontPressureFlag: false
     }),
     getters: {
         getUltrasonicCollisionStaLeft(state) {
@@ -135,5 +138,12 @@ export const useEcho = defineStore('echo', {
                 }
             }
         },
+        //fix: 滑动条数据与上行消息冲突问题
+        onBackPressureSetInput(val) {
+            this.backPressureSetFlag = true
+        },
+        onFrontPressureSetInput(val) {
+            this.frontPressureFlag = true
+        }
     },
 })

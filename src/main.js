@@ -77,6 +77,7 @@ function hexToBin(hex) {
     return (parseInt(hex,16).toString(2)).padStart(8, '0')
 }
 let lastDeviceData = null
+let flag = true
 window.updateDeviceData = function (data) {
     const minLength = 90;
     if (data.startsWith("AA") && data.length < minLength) {
@@ -157,9 +158,13 @@ window.updateDeviceData = function (data) {
     info.rightCollisionDis = hexToDec(data.substring(66, 70))
 
     //前负压设定值（0 - 1000 对应 0-100%)
-    info.frontPressureSet = hexToDec(data.substring(70, 74))
+    if (echo.$state.frontPressureFlag) {
+        info.frontPressureSet = hexToDec(data.substring(70, 74))
+    }
     //后负压设定值（0 - 1000 对应 0-100%）
-    info.backPressureSet = hexToDec(data.substring(74, 78))
+    if (echo.$state.backPressureSetFlag) {
+        info.backPressureSet = hexToDec(data.substring(74, 78))
+    }
     //前负压吸力采集值（Pa-帕） 27 - 28
     info.frontPressure = hexToDec(data.substring(78, 82))
     //后负压吸力采集值（Pa-帕）
@@ -177,5 +182,4 @@ window.updateDeviceData = function (data) {
 
     //合并到state内
     echo.$patch(info)
-
 }
