@@ -18,14 +18,12 @@ import { useEcho } from "../store/echo.js";
 import Left from "./left/Index.vue"
 import Right from "./right/Index.vue"
 import Content from "./content/Index.vue"
-import {onBeforeUnmount} from "vue"
 
 const store = useStore()
 const echo = useEcho()
 
 store.$subscribe((mutation, state) => {
   //如果数据发生改动 发送数据包
-  console.log('mutation:',mutation)
   //合并双行消息
   const data = {
     ...state,
@@ -35,10 +33,6 @@ store.$subscribe((mutation, state) => {
     backPressureSet: echo.$state.backPressureSet,
   }
   store.sendCmd(data)
-})
-
-onBeforeUnmount(() => {
-  localStorage.setItem('store', JSON.stringify(store.$state))
 })
 </script>
 

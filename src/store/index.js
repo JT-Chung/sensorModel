@@ -1,9 +1,6 @@
 import { defineStore } from "pinia";
 import { useEcho } from "./echo.js";
 
-function getCache(key) {
-    return JSON.parse(localStorage.getItem('store')) && JSON.parse(localStorage.getItem('store'))[key]
-}
 export const useStore = defineStore('store', {
     state: () => ({
         carVelocity: 0, //爬行速度
@@ -12,17 +9,17 @@ export const useStore = defineStore('store', {
 
         backPressureSet: 0, //后负压设定值（0 - 1000 对应 0-100%）
 
-        frontBrushCtr: getCache('frontBrushCtr') ?? 0, //前滚刷 (0:关 1：开)
-        rearBrushCtr: getCache('rearBrushCtr') ?? 0, //后滚刷 (0:关 1：开)
-        frontValveOpenTime: getCache('frontValveOpenTime') ?? 0, //前清洗液开（单位：秒 ）
-        frontValveCloseTime: getCache('frontValveCloseTime') ?? 0, //前清洗液关（单位：秒 ）
-        backValveOpenTime: getCache('backValveOpenTime') ?? 0, //后清洗液开（单位：秒 ）
-        backValveCloseTime: getCache('backValveCloseTime') ?? 0, //后清洗液关（单位：秒 ）
-        sideBrushCtr: getCache('sideBrushCtr') ?? 0, //边刷控制(0:关 1：开)
+        frontBrushCtr: 0, //前滚刷 (0:关 1：开)
+        rearBrushCtr: 0, //后滚刷 (0:关 1：开)
+        frontValveOpenTime: 0, //前清洗液开（单位：秒 ）
+        frontValveCloseTime: 0, //前清洗液关（单位：秒 ）
+        backValveOpenTime: 0, //后清洗液开（单位：秒 ）
+        backValveCloseTime: 0, //后清洗液关（单位：秒 ）
+        sideBrushCtr: 0, //边刷控制(0:关 1：开)
 
-        aWinchCtr: getCache('aWinchCtr') ?? 0, //a卷扬机控制（0：停 1：收 2：放 3：自动）
-        aWinchNeatenCtr: getCache('aWinchNeatenCtr') ?? 0, //a卷扬机理线器控制（3：自动 1：左 2：右 0：停）
-        bWinchCtr: getCache('bWinchCtr') ?? 0, //b卷扬机控制（0：停 1：收 2：放 3：自动）
+        aWinchCtr: 0, //a卷扬机控制（0：停 1：收 2：放 3：自动）
+        aWinchNeatenCtr: 0, //a卷扬机理线器控制（3：自动 1：左 2：右 0：停）
+        bWinchCtr: 0, //b卷扬机控制（0：停 1：收 2：放 3：自动）
 
         /*
         * 小车运行模式
@@ -36,24 +33,24 @@ export const useStore = defineStore('store', {
         * 0x09:角度校准
         * */
         carRunMode: 0,
-        HuggingSideDis: getCache('HuggingSideDis') ?? 0, //延边模式距离(单位mm)
-        autoMoveLevelDis: getCache('autoMoveLevelDis') ?? 0, //横向距离（m 目前单位为米）
-        autoMoveVerticalDis: getCache('autoMoveVerticalDis') ?? 0, //纵向距离(cm 目前单位为厘米)
+        HuggingSideDis: 0, //延边模式距离(单位mm)
+        autoMoveLevelDis: 0, //横向距离（m 目前单位为米）
+        autoMoveVerticalDis: 0, //纵向距离(cm 目前单位为厘米)
 
-        crossAbstacleDis1: getCache('crossAbstacleDis1') ?? 0, //前模组长度(mm)
-        crossAbstacleDis2: getCache('crossAbstacleDis2') ?? 0, //后模组长度(mm)
-        frontLifterCmd: getCache('frontLifterCmd') ?? 0, //前模组升降控制（0：停 1：升 2：降）
-        backLifterCmd: getCache('backLifterCmd') ??  0,  //后升降控制（0：停 1：升 2：降）
+        crossAbstacleDis1: 0, //前模组长度(mm)
+        crossAbstacleDis2: 0, //后模组长度(mm)
+        frontLifterCmd: 0, //前模组升降控制（0：停 1：升 2：降）
+        backLifterCmd: 0,  //后升降控制（0：停 1：升 2：降）
 
-        cameraPNCLAlgorithmEn: getCache('cameraPNCLAlgorithmEn') ?? 0, //点云算法使能(PNCL: point cloud), 0: 禁止  1: 使能
-        cameraRGBAlgorithmEn: getCache('cameraRGBAlgorithmEn') ?? 0, //RGB算法使能, 0: 禁止  1: 使能
-        loraCtrl: getCache('loraCtrl') ?? 0, //lora模块开启/关闭(0: 开启　 1: 关闭)
-        verticalMode: getCache('verticalMode') ?? 0, //垂面模式（0-非垂面模式，1-垂面模式）
+        cameraPNCLAlgorithmEn: 0, //点云算法使能(PNCL: point cloud), 0: 禁止  1: 使能
+        cameraRGBAlgorithmEn: 0, //RGB算法使能, 0: 禁止  1: 使能
+        loraCtrl: 0, //lora模块开启/关闭(0: 开启　 1: 关闭)
+        verticalMode: 0, //垂面模式（0-非垂面模式，1-垂面模式）
 
         //延边方向(自动延边=1时，设置无效):
         //  4：顺时针右边，  1： 顺时针下边，  3：顺时针上边，
         //  5：逆时针下边，  8： 逆时针左边，  7：逆时针上边，
-        HuggingSideDir: getCache('HuggingSideDir') ?? 4,
+        HuggingSideDir: 4,
 
         //升降电机高度(mm) 界面不展示
         lifterHeight: 0,
@@ -154,7 +151,6 @@ export const useStore = defineStore('store', {
             return this.toLittleEndianStr(str)
         },
         sendCmd(param) {
-            console.log('send -->',param)
             const decToHex = this.decToHex
             let cmd =
                 decToHex(param.verticalMode, 2) +
