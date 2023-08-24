@@ -1,6 +1,6 @@
 <template>
   <el-card shadow="hover" :body-style="echo.getCardBodyStyle">
-    <b class="title">传感器状态</b>
+    <b class="title">Sensor status</b>
     <div class="sensor-status">
       <el-icon :size="sensorStatusIconSize" class="ss1" :style="echo.collisionStaB1 === '0' ? {color: '#1684fc'} : {color: '#d23535'}"><HelpFilled /></el-icon>
       <el-icon :size="sensorStatusIconSize" class="ss2" :style="echo.getUltrasonicCollisionStaLeft"><HelpFilled /></el-icon>
@@ -25,7 +25,7 @@
   </el-card>
 
   <el-card style="position: relative" shadow="hover" :body-style="echo.getCardBodyStyle">
-    <span>延边方向选择：</span>
+    <span>Edgewise direction:</span>
     <div class="yanbian-bgc">
       <input  type="radio" name="HuggingSideDir" id="HuggingSideDir0" :value="4" class="yb0" @click="onYBChanged" :checked="store.HuggingSideDir === 4">
       <input  type="radio" name="HuggingSideDir" id="HuggingSideDir1" :value="1" class="yb1" @click="onYBChanged" :checked="store.HuggingSideDir === 1">
@@ -39,21 +39,21 @@
   <el-card shadow="hover" :body-style="echo.calcCardPadding">
     <ul class="desc">
       <li>
-        <div><span>A旋转杆：</span> <span>{{echo.aAngle}}°</span></div>
-        <div><span>B旋转杆：</span> <span>{{echo.bAngle}}°</span></div>
-        <div><span>前模组姿态：</span> <span>{{echo.frontCarAngle}}°</span></div>
-        <div><span>后模组姿态：</span> <span>{{echo.rearCarAngle}}°</span></div>
+        <div><span>A rotarod degree：</span> <span>{{echo.aAngle}}°</span></div>
+        <div><span>B rotarod degree：</span> <span>{{echo.bAngle}}°</span></div>
+        <div><span>Front position：</span> <span>{{echo.frontCarAngle}}°</span></div>
+        <div><span>Rear Position：</span> <span>{{echo.rearCarAngle}}°</span></div>
       </li>
       <li>
-        <div><span>超声距离左：</span> <span>{{echo.leftCollisionDis}}&nbsp;mm</span></div>
-        <div><span>超声距离右：</span> <span>{{echo.rightCollisionDis}}&nbsp;mm</span></div>
-        <div><span>算法高度：</span> <span>{{echo.abstacleHight}}&nbsp;mm</span></div>
-        <div><span>算法距离：</span> <span>{{echo.abstacleDis}}&nbsp;mm</span></div>
+        <div><span>Left ultrasonic：</span> <span>{{echo.leftCollisionDis}}&nbsp;mm</span></div>
+        <div><span>Right ultrasonic：</span> <span>{{echo.rightCollisionDis}}&nbsp;mm</span></div>
+        <div><span>Algorithm heigh：</span> <span>{{echo.abstacleHight}}&nbsp;mm</span></div>
+        <div><span>Algorithm distance：</span> <span>{{echo.abstacleDis}}&nbsp;mm</span></div>
       </li>
       <li>
-        <div><span>电量：</span> <span>{{echo.betteryLevel}}&nbsp;% </span></div>
-        <div><span>水压：</span> <span>{{echo.hydroPumpPressure}}&nbsp;Pa</span></div>
-        <div><span>已清洗：</span> <span>{{echo.HuggingSidePercent}}&nbsp;% </span></div>
+        <div><span> Battery：</span> <span>{{echo.betteryLevel}}&nbsp;% </span></div>
+        <div><span>Water pressure：</span> <span>{{echo.hydroPumpPressure}}&nbsp;Pa</span></div>
+        <div><span>Cleaned：</span> <span>{{echo.HuggingSidePercent}}&nbsp;% </span></div>
       </li>
     </ul>
   </el-card>

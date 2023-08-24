@@ -2,44 +2,44 @@
   <el-card shadow="hover" :body-style="echo.calcCardPadding">
     <div class="radio-group">
       <input type="radio" id="0x04" value="4" name="carRunMode" v-model.number="echo.carRunMode" @click="store.onCarRunModeChanged">
-      <label for="0x04">越障</label>
+      <label for="0x04">Crossing</label>
     </div>
     <el-space v-spacing-bottom alignment="left">
       <div>
-        <div class="label" v-spacing-bottom>前模组长度(mm)：</div>
+        <div class="label" v-spacing-bottom>Front module length(mm)：</div>
         <el-input-number v-model="store.crossAbstacleDis1" placeholder="请输入前模组长度" :step="echo.accuracy" :min="0"/>
       </div>
       <div>
-        <div class="label" v-spacing-bottom>后模组长度(mm)：</div>
+        <div class="label" v-spacing-bottom>Rear module length(mm)：</div>
         <el-input-number v-model="store.crossAbstacleDis2" placeholder="请输入后模组长度" :step="echo.accuracy" :min="0"/>
       </div>
     </el-space>
-    <div v-spacing-bottom="5">前模组升/降：</div>
+    <div v-spacing-bottom="5"> Front lift /lower：</div>
     <div v-spacing-bottom>
       <el-radio-group v-model="store.frontLifterCmd">
-        <el-radio-button :label="0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;停&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</el-radio-button>
-        <el-radio-button :label="1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;升&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</el-radio-button>
-        <el-radio-button :label="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;降&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</el-radio-button>
+        <el-radio-button :label="0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Stop&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</el-radio-button>
+        <el-radio-button :label="1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Lift&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</el-radio-button>
+        <el-radio-button :label="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Lower&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</el-radio-button>
       </el-radio-group>
     </div>
-    <div v-spacing-bottom="5">后模组升/降：</div>
+    <div v-spacing-bottom="5">Rear lift /lower：</div>
     <div v-spacing-bottom>
       <el-radio-group v-model="store.backLifterCmd">
-        <el-radio-button :label="0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;停&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</el-radio-button>
-        <el-radio-button :label="1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;升&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</el-radio-button>
-        <el-radio-button :label="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;降&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</el-radio-button>
+        <el-radio-button :label="0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Stop&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</el-radio-button>
+        <el-radio-button :label="1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Lift&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</el-radio-button>
+        <el-radio-button :label="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Lower&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</el-radio-button>
       </el-radio-group>
     </div>
     <el-space>
-      <span>升/降限位：</span>
+      <span>lifting limit：</span>
       <span>
-          前
+          Front
           <el-icon size="20" style="vertical-align: bottom;padding-left: 5px" :color="echo.frontDownlimitSta === 0 ? '#13950a' : '#d23535'">
             <CircleCheckFilled />
           </el-icon>
       </span>
       <span>
-          后
+          Rear
           <el-icon size="20" style="vertical-align: bottom;padding-left: 5px" :color="echo.backDownlimitSta === 0 ? '#13950a' : '#d23535'">
             <CircleCheckFilled />
           </el-icon>

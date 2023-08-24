@@ -1,28 +1,28 @@
 <template>
   <el-card shadow="hover" :body-style="store.getCardBodyStyle">
-    <div v-spacing-bottom>运行模式：</div>
+    <div v-spacing-bottom>Mode：</div>
     <el-space v-spacing-bottom :size="30">
       <div class="radio-group">
         <input type="radio" id="0x00" value="0" name="carRunMode"  v-model.number="echo.carRunMode" @click="store.onCarRunModeChanged">
-        <label for="0x00">急停</label>
+        <label for="0x00">E-Stop</label>
       </div>
       <div class="radio-group">
         <input type="radio" id="0x01" value="1" name="carRunMode" v-model.number="echo.carRunMode" @click="store.onCarRunModeChanged">
-        <label for="0x01">手动</label>
+        <label for="0x01">Manual</label>
       </div>
       <div class="radio-group">
         <input type="radio" id="0x06" value="6" name="carRunMode" v-model.number="echo.carRunMode" @click="store.onCarRunModeChanged">
-        <label for="0x06">强制</label>
+        <label for="0x06">Unlimited</label>
       </div>
     </el-space>
     <div>
       <div class="radio-group">
         <input type="radio" id="0x03" value="3" name="carRunMode" v-model.number="echo.carRunMode" @click="store.onCarRunModeChanged">
-        <label for="0x03">延边模式</label>
+        <label for="0x03">Edgewise</label>
       </div>
       <el-space v-spacing-bottom alignment="left">
         <div>
-          <span>延边距离(mm)：</span>
+          <span>Edgewise distance(mm)：</span>
           <el-input-number v-model="store.HuggingSideDis" placeholder="请输入距离" :step="echo.accuracy" :min="0" @blur="onBLur"/>
         </div>
       </el-space>
@@ -30,15 +30,15 @@
     <div>
       <div class="radio-group">
         <input type="radio" id="0x05" value="5" name="carRunMode" v-model.number="echo.carRunMode" @click="store.onCarRunModeChanged">
-        <label for="0x05">"之"子模式</label>
+        <label for="0x05">Zigzag mode</label>
       </div>
       <el-space alignment="left" direction="vertical">
         <el-space>
-          <span class="label">横向距离(m):</span>
+          <span class="label">Horizontal distance(m):</span>
           <el-input-number style="margin-left: 18px" v-model="store.autoMoveLevelDis" placeholder="请输入" :step="echo.accuracy" :min="0"/>
         </el-space>
         <el-space>
-          <span class="label">纵向距离(cm):</span>
+          <span class="label">Vertical Distance(cm):</span>
           <el-input-number style="margin-left: 10px" v-model="store.autoMoveVerticalDis" placeholder="请输入" :step="echo.accuracy" :min="0"/>
         </el-space>
       </el-space>

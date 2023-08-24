@@ -3,7 +3,7 @@
     <div v-spacing-bottom style="display: flex; justify-content: space-between">
       <el-space>
         <span class="label">
-        前吸附：
+        Front vacuum:
         </span>
         <el-select v-model="echo.frontPressureSet" placeholder="请选择" @change="store.onFrontPressureSetChanged">
           <el-option
@@ -22,7 +22,7 @@
 
     <div v-spacing-bottom style="display: flex; justify-content: space-between">
       <div class="label">
-        压强：<span v-spacing-left>{{echo.frontPressure}}&nbsp;pa</span>
+        Pressure:<span v-spacing-left>{{echo.frontPressure}}&nbsp;pa</span>
       </div>
       <div>
         <template v-if="echo.adsorbPressureSta === 0 || echo.adsorbPressureSta === 2">
@@ -37,7 +37,7 @@
     <div v-spacing-bottom style="display: flex; justify-content: space-between">
       <el-space>
       <span class="label">
-        后吸附：
+        Rear vacuum:
       </span>
         <el-select v-model="echo.backPressureSet" @change="store.onBackPressureSetChanged" placeholder="请选择">
           <el-option
@@ -57,7 +57,7 @@
 
     <div v-spacing-bottom style="display: flex; justify-content: space-between">
       <span class="label">
-        压强：<span v-spacing-left>{{echo.backPressure}} &nbsp;pa</span>
+        Pressure:<span v-spacing-left>{{echo.backPressure}} &nbsp;pa</span>
       </span>
       <div>
         <template v-if="echo.adsorbPressureSta === 0 || echo.adsorbPressureSta === 1">

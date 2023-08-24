@@ -151,6 +151,7 @@ export const useStore = defineStore('store', {
             return this.toLittleEndianStr(str)
         },
         sendCmd(param) {
+            console.log('send:', param)
             const decToHex = this.decToHex
             let cmd =
                 decToHex(param.verticalMode, 2) +

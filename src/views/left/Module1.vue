@@ -1,7 +1,7 @@
 <template>
   <el-card shadow="hover" :body-style="echo.getCardBodyStyle">
     <el-space v-spacing-bottom>
-      <span>爬行速度：</span>
+      <span>Climbing speed:</span>
       <el-select v-model="store.carVelocity" placeholder="请选择" style="width: 150px" @change="onCarVelocityChanged">
         <el-option
             v-for="item in carVelocityOptions"
@@ -17,31 +17,31 @@
     <div>
       <el-space>
         <div>
-          <span style="font-size: 20px">前:</span>
+          <span style="font-size: 20px">Forward:</span>
           <el-icon size="20" style="vertical-align: bottom;padding-left: 5px" :color="echo.rockerDir === 1 ? '#13950a' : '#d23535'">
             <CircleCheckFilled />
           </el-icon>
         </div>
         <div>
-          <span style="font-size: 20px">后:</span>
+          <span style="font-size: 20px">Retreat:</span>
           <el-icon size="20" style="vertical-align: bottom;padding-left: 5px" :color="echo.rockerDir === 2 ? '#13950a' : '#d23535'">
             <CircleCheckFilled />
           </el-icon>
         </div>
         <div>
-          <span style="font-size: 20px">左:</span>
+          <span style="font-size: 20px">Left:</span>
           <el-icon size="20" style="vertical-align: bottom;padding-left: 5px" :color="echo.rockerDir === 3 ? '#13950a' : '#d23535'">
             <CircleCheckFilled />
           </el-icon>
         </div>
         <div>
-          <span style="font-size: 20px">右:</span>
+          <span style="font-size: 20px">Right:</span>
           <el-icon size="20" style="vertical-align: bottom;padding-left: 5px" :color="echo.rockerDir === 4 ? '#13950a' : '#d23535'">
             <CircleCheckFilled />
           </el-icon>
         </div>
         <div>
-          <span style="font-size: 20px">停:</span>
+          <span style="font-size: 20px">Stop:</span>
           <el-icon size="20" style="vertical-align: bottom;padding-left: 5px" :color="echo.rockerDir === 0 ? '#13950a' : '#d23535'">
             <CircleCheckFilled />
           </el-icon>

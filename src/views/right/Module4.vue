@@ -1,8 +1,8 @@
 <template>
   <div>
     <el-space style="margin: 5px 5px 5px">
-      <el-button type="danger" @click="onIPVSClk">视频监控</el-button>
-      <el-button type="danger" @click="onResetClk">重置</el-button>
+      <el-button type="danger" @click="onIPVSClk">Monitor</el-button>
+      <el-button type="danger" @click="onResetClk">Reset</el-button>
       <el-select v-model="echo.accuracy" placeholder="精度选择">
         <el-option
             v-for="item in accuracy"
@@ -14,21 +14,21 @@
     </el-space>
     <el-card shadow="hover" :body-style="echo.calcCardPadding">
       <el-space v-spacing-bottom>
-        <span>算法</span>
+        <span>Algorithm</span>
         <el-switch v-model="store.cameraPNCLAlgorithmEn" :active-value="1" :inactive-value="0" />
-        <span v-spacing-left="2">RGB相机</span>
+        <span v-spacing-left="2">Camera</span>
         <el-switch v-model="store.cameraRGBAlgorithmEn" :active-value="1" :inactive-value="0" />
-        <span v-spacing-left="2">后通信</span>
+        <span v-spacing-left="2">Rear module connection</span>
         <el-switch v-model="store.loraCtrl" :active-value="1" :inactive-value="0"></el-switch>
       </el-space>
       <el-space :size="10">
         <el-radio-group v-model="echo.verticalMode" style="margin-right: 5px" @change="store.onVerticalModeChanged">
-          <el-radio :label="1"><span style="font-size: 16px">垂直模式</span></el-radio>
-          <el-radio :label="0"><span style="font-size: 16px">非垂直模式</span></el-radio>
+          <el-radio :label="1"><span style="font-size: 16px">Vertical mode</span></el-radio>
+          <el-radio :label="0"><span style="font-size: 16px">non-verticality mode</span></el-radio>
         </el-radio-group>
         <div class="radio-group">
           <input type="radio" id="0x09" value="9" name="carRunMode" v-model.number="echo.carRunMode" @click="store.onCarRunModeChanged">
-          <label for="0x09">校准</label>
+          <label for="0x09">Calibration</label>
         </div>
       </el-space>
     </el-card>
@@ -42,6 +42,7 @@ import {accuracy} from "./config.js";
 
 const store = useStore()
 const echo = useEcho()
+//视频监控
 const onIPVSClk = () => {
   window.play()
 }

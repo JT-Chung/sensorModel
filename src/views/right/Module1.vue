@@ -1,17 +1,17 @@
 <template>
   <el-card shadow="hover" :body-style="echo.getCardBodyStyle">
-    <div v-spacing-bottom style="display: flex; justify-content: space-between"><span>通讯状态：</span> <span @click="triggerFullScreen"><el-icon style="color: #efefef"><Switch /></el-icon></span></div>
+    <div v-spacing-bottom style="display: flex; justify-content: space-between"><span>Connection：</span> <span @click="triggerFullScreen"><el-icon style="color: #efefef"><Switch /></el-icon></span></div>
     <el-space size="large">
       <span>
-        前模组
+        Front module
         <el-icon size="20" class="icon-style" :style="{color: echo.p900CommSta === 0 ? '#13950a': '#d23535'}"><SuccessFilled /></el-icon>
       </span>
       <span>
-          后模组
+          Rear module
       </span>
       <el-icon size="20" class="icon-style" :style="{color: echo.rearModuleCommSta === 0 ? '#13950a': '#d23535'}"><SuccessFilled /></el-icon>
       <span>
-          算法CPU
+          Algorithm core
       </span>
       <el-icon size="20" class="icon-style" :style="{color: echo.rk3399CommSta === 0 ? '#13950a': '#d23535'}"><SuccessFilled /></el-icon>
     </el-space>

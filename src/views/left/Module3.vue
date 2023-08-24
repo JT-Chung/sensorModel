@@ -1,14 +1,14 @@
 <template>
   <el-card shadow="hover" :body-style="echo.getCardBodyStyle">
     <el-space v-spacing-bottom>
-      <span class="label">前滚刷：</span>
+      <span class="label">Front brush:</span>
       <el-switch v-model="store.frontBrushCtr" :active-value="1" :inactive-value="0"/>
-      <span v-spacing-left>后滚刷：</span>
+      <span v-spacing-left>Rear brush:</span>
       <el-switch v-model="store.rearBrushCtr" :active-value="1" :inactive-value="0"/>
     </el-space>
     <el-space v-spacing-bottom>
-      <span class="label">前清洗液：</span>
-      <span>开</span>
+      <span class="label">Front cleaning liquid:</span>
+      <span>Open</span>
       <el-select v-model="store.frontValveOpenTime" placeholder="请选择">
         <el-option
             v-for="item in cleaningFluidOptions"
@@ -17,7 +17,7 @@
             :value="item.value"
         />
       </el-select>
-      <span>关</span>
+      <span>Close</span>
       <el-select v-model="store.frontValveCloseTime" placeholder="请选择">
         <el-option
             v-for="item in cleaningFluidOptions"
@@ -28,8 +28,8 @@
       </el-select>
     </el-space>
     <el-space v-spacing-bottom>
-      <span class="label">后清洗液：</span>
-      <span>开</span>
+      <span class="label">Rear cleaning liquid:</span>
+      <span>Open</span>
       <el-select v-model="store.backValveOpenTime" placeholder="请选择">
         <el-option
             v-for="item in cleaningFluidOptions"
@@ -38,7 +38,7 @@
             :value="item.value"
         />
       </el-select>
-      <span>关</span>
+      <span>Close</span>
       <el-select v-model="store.backValveCloseTime" placeholder="请选择">
         <el-option
             v-for="item in cleaningFluidOptions"
@@ -49,7 +49,7 @@
       </el-select>
     </el-space>
     <el-space>
-      <span class="label">边刷：</span>
+      <span class="label">Side brush：</span>
       <el-switch v-model="store.sideBrushCtr" :active-value="1" :inactive-value="0"/>
     </el-space>
   </el-card>
