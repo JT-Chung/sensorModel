@@ -87,107 +87,115 @@ const onYBChanged = (event) => {
   position: relative;
   .ss1 {
     position: absolute;
-    left: 62px;
-    top: 0;
+    left: 25px;
+    top: -30px;
     color: blue;
   }
   .ss2 {
     position: absolute;
-    left: 103px;
-    top: 3px;
+    left: 75px;
+    top: -25px;
     color: #1684fc;
   }
   .ss3 {
     position: absolute;
-    left: 46px;
-    top: 38px;
+    left: 5px;
+    top: 10px;
     color: #1684fc;
   }
   .ss4 {
     position: absolute;
-    left: 140px;
-    top: 62px;
+    left: 100px;
+    top: 60px;
     color: #1684fc;
   }
   .ss5 {
     position: absolute;
-    right: 62px;
-    top: 0;
+    right: 22px;
+    top: -30px;
     color: #1684fc;
   }
   .ss6 {
     position: absolute;
-    right: 104px;
-    top: 4px;
+    right: 75px;
+    top: -25px;
     color: #1684fc;
   }
   .ss7 {
     position: absolute;
-    right: 40px;
-    top: 34px;
+    right: 5px;
+    top: 10px;
     color: #1684fc;
   }
   .ss8 {
     position: absolute;
-    right: 142px;
+    right: 100px;
     top: 60px;
     color: #1684fc;
   }
   .ss9 {
     position: absolute;
-    left: 38px;
-    bottom: 25px;
+    left: 10px;
+    bottom: 10px;
     color: #1684fc;
   }
   .ss10 {
     position: absolute;
-    left: 80px;
-    bottom: 0;
+    left: 50px;
+    bottom: -15px;
     color: #1684fc;
   }
   .ss11 {
     position: absolute;
-    right: 41px;
-    bottom: 25px;
+    right: 10px;
+    bottom: 10px;
     color: #1684fc;
   }
   .ss12 {
     position: absolute;
-    right: 84px;
-    bottom: 0;
+    right: 50px;
+    bottom: -15px;
     color: #1684fc;
   }
   &-text-left {
     font-size: 20px;
     color: #d74d4d;
     position: absolute;
-    top: 77px;
-    left: 42px;
+    top: 50px;
+    left: 10px;
   }
   &-text-right {
     font-size: 20px;
     color: #d74d4d;
     position: absolute;
-    top: 77px;
-    right: 50px;
+    top: 50px;
+    right: 10px;
   }
 }
-.top-banner {
-  height: 140px;
+.banner {
+  height: 280px;
   width: 100%;
-  background-image: url("../../assets/topBanner.png");
+  background-image: url("../../assets/banner.png");
   background-repeat: no-repeat;
   background-position: top left;
-  background-size: 100% 140px;
+  background-size: 100% 280px;
 }
-.bottom-banner {
-  height: 140px;
-  width: 100%;
-  background-image: url("../../assets/bottomBanner.png");
-  background-repeat: no-repeat;
-  background-position: -8px 8px;
-  background-size: 100% 140px;
-}
+// .top-banner {
+//   height: 140px;
+//   width: 100%;
+//   background-image: url("../../assets/topBanner.png");
+//   background-repeat: no-repeat;
+//   background-position: top left;
+//   background-size: 100% 140px;
+// }
+// .bottom-banner {
+//   height: 140px;
+//   width: 100%;
+//   background-image: url("../../assets/bottomBanner.png");
+//   background-repeat: no-repeat;
+//   background-position: -8px 8px;
+//   background-size: 100% 140px;
+// }
 .yanbian-bgc {
   height: 180px;
   width: 100%;
