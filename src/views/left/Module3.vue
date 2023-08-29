@@ -7,9 +7,9 @@
       <el-switch v-model="store.rearBrushCtr" :active-value="1" :inactive-value="0"/>
     </el-space>
     <el-space v-spacing-bottom>
-      <span class="label">Front cleaning liquid:</span>
-      <span>Open</span>
-      <el-select v-model="store.frontValveOpenTime" placeholder="请选择">
+      <span class="label">F-cleaner:</span>
+      <span>O</span>
+      <el-select v-model="store.frontValveOpenTime" placeholder="here to choose">
         <el-option
             v-for="item in cleaningFluidOptions"
             :key="item.value"
@@ -17,8 +17,8 @@
             :value="item.value"
         />
       </el-select>
-      <span>Close</span>
-      <el-select v-model="store.frontValveCloseTime" placeholder="请选择">
+      <span>C</span>
+      <el-select v-model="store.frontValveCloseTime" placeholder="here to choose">
         <el-option
             v-for="item in cleaningFluidOptions"
             :key="item.value"
@@ -28,9 +28,9 @@
       </el-select>
     </el-space>
     <el-space v-spacing-bottom>
-      <span class="label">Rear cleaning liquid:</span>
-      <span>Open</span>
-      <el-select v-model="store.backValveOpenTime" placeholder="请选择">
+      <span class="label">R-cleaner:</span>
+      <span>O</span>
+      <el-select v-model="store.backValveOpenTime" placeholder="here to choose">
         <el-option
             v-for="item in cleaningFluidOptions"
             :key="item.value"
@@ -38,8 +38,8 @@
             :value="item.value"
         />
       </el-select>
-      <span>Close</span>
-      <el-select v-model="store.backValveCloseTime" placeholder="请选择">
+      <span>C</span>
+      <el-select v-model="store.backValveCloseTime" placeholder="here to choose">
         <el-option
             v-for="item in cleaningFluidOptions"
             :key="item.value"

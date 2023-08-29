@@ -2,32 +2,32 @@
   <el-card shadow="hover" :body-style="echo.calcCardPadding">
     <div class="radio-group">
       <input type="radio" id="0x04" value="4" name="carRunMode" v-model.number="echo.carRunMode" @click="store.onCarRunModeChanged">
-      <label for="0x04">Crossing</label>
+      <label for="0x04"><b>Crossing</b></label>
     </div>
     <el-space v-spacing-bottom alignment="left">
       <div>
-        <div class="label" v-spacing-bottom>Front module length(mm)：</div>
+        <div class="label" v-spacing-bottom>F-module len(mm)：</div>
         <el-input-number v-model="store.crossAbstacleDis1" placeholder="请输入前模组长度" :step="echo.accuracy" :min="0"/>
       </div>
       <div>
-        <div class="label" v-spacing-bottom>Rear module length(mm)：</div>
+        <div class="label" v-spacing-bottom>R-module len(mm)：</div>
         <el-input-number v-model="store.crossAbstacleDis2" placeholder="请输入后模组长度" :step="echo.accuracy" :min="0"/>
       </div>
     </el-space>
     <div v-spacing-bottom="5"> Front lift /lower：</div>
     <div v-spacing-bottom>
       <el-radio-group v-model="store.frontLifterCmd">
-        <el-radio-button :label="0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Stop&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</el-radio-button>
-        <el-radio-button :label="1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Lift&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</el-radio-button>
-        <el-radio-button :label="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Lower&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</el-radio-button>
+        <el-radio-button :label="0">&nbsp;&nbsp;&nbsp;&nbsp;Stop&nbsp;&nbsp;&nbsp;&nbsp;</el-radio-button>
+        <el-radio-button :label="1">&nbsp;&nbsp;&nbsp;&nbsp;Up&nbsp;&nbsp;&nbsp;&nbsp;</el-radio-button>
+        <el-radio-button :label="2">&nbsp;&nbsp;&nbsp;&nbsp;Down&nbsp;&nbsp;&nbsp;&nbsp;</el-radio-button>
       </el-radio-group>
     </div>
     <div v-spacing-bottom="5">Rear lift /lower：</div>
     <div v-spacing-bottom>
       <el-radio-group v-model="store.backLifterCmd">
-        <el-radio-button :label="0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Stop&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</el-radio-button>
-        <el-radio-button :label="1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Lift&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</el-radio-button>
-        <el-radio-button :label="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Lower&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</el-radio-button>
+        <el-radio-button :label="0">&nbsp;&nbsp;&nbsp;&nbsp;Stop&nbsp;&nbsp;&nbsp;&nbsp;</el-radio-button>
+        <el-radio-button :label="1">&nbsp;&nbsp;&nbsp;&nbsp;Up&nbsp;&nbsp;&nbsp;&nbsp;</el-radio-button>
+        <el-radio-button :label="2">&nbsp;&nbsp;&nbsp;&nbsp;Down&nbsp;&nbsp;&nbsp;&nbsp;</el-radio-button>
       </el-radio-group>
     </div>
     <el-space>

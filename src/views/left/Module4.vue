@@ -4,10 +4,10 @@
       <span>A winch</span>
       <div style="padding-top: 5px">
         <el-radio-group v-model="store.aWinchCtr">
-          <el-radio-button :label="3">&nbsp;&nbsp;Auto   &nbsp;</el-radio-button>
-          <el-radio-button :label="0">&nbsp;Stop&nbsp;&nbsp;</el-radio-button>
-          <el-radio-button :label="1">&nbsp;Roll in&nbsp;</el-radio-button>
-          <el-radio-button :label="2">&nbsp;Roll out&nbsp;</el-radio-button>
+          <el-radio-button :label="3">Auto</el-radio-button>
+          <el-radio-button :label="0">Stop</el-radio-button>
+          <el-radio-button :label="1">Roll in</el-radio-button>
+          <el-radio-button :label="2">Roll out</el-radio-button>
         </el-radio-group>
       </div>
     </div>
@@ -15,10 +15,10 @@
       <span>Arrange cable</span>
       <div style="padding-top: 5px">
         <el-radio-group v-model="store.aWinchNeatenCtr">
-          <el-radio-button :label="3">&nbsp;Auto   &nbsp;</el-radio-button>
-          <el-radio-button :label="0">&nbsp;Stop&nbsp;</el-radio-button>
-          <el-radio-button :label="1">&nbsp;Left&nbsp;</el-radio-button>
-          <el-radio-button :label="2">&nbsp;Right&nbsp;</el-radio-button>
+          <el-radio-button :label="3">Auto</el-radio-button>
+          <el-radio-button :label="0">Stop</el-radio-button>
+          <el-radio-button :label="1">Left</el-radio-button>
+          <el-radio-button :label="2">Right</el-radio-button>
         </el-radio-group>
       </div>
     </div>
@@ -26,10 +26,10 @@
       <span>B winch</span>
       <div style="padding-top: 5px">
         <el-radio-group v-model="store.bWinchCtr">
-          <el-radio-button :label="3">&nbsp;Auto   &nbsp;</el-radio-button>
-          <el-radio-button :label="0">&nbsp;Stop&nbsp;</el-radio-button>
-          <el-radio-button :label="1">&nbsp;Roll in&nbsp;</el-radio-button>
-          <el-radio-button :label="2">&nbsp;Roll out&nbsp;</el-radio-button>
+          <el-radio-button :label="3">Auto</el-radio-button>
+          <el-radio-button :label="0">Stop</el-radio-button>
+          <el-radio-button :label="1">Roll in</el-radio-button>
+          <el-radio-button :label="2">Roll out</el-radio-button>
         </el-radio-group>
       </div>
     </div>

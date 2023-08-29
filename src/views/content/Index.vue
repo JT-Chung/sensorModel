@@ -15,17 +15,18 @@
       <el-icon :size="sensorStatusIconSize" class="ss11" :style="echo.collisionStaB6 === '0' ? {color: '#1684fc'} : {color: '#d23535'}"><HelpFilled /></el-icon>
       <el-icon :size="sensorStatusIconSize" class="ss12" :style="echo.collisionStaB7 === '0' ? {color: '#1684fc'} : {color: '#d23535'}"><HelpFilled /></el-icon>
 
-      <b class="sensor-status-text-left">{{echo.ArmWheelLeftAngle}}度</b>
-      <b class="sensor-status-text-right">{{echo.ArmWheelRightAngle}}度</b>
-      <div class="top-banner">
+      <b class="sensor-status-text-left">{{echo.ArmWheelLeftAngle}}℃</b>
+      <b class="sensor-status-text-right">{{echo.ArmWheelRightAngle}}℃</b>
+      <div class="banner"></div>
+      <!-- <div class="top-banner">
       </div>
       <div class="bottom-banner">
-      </div>
+      </div> -->
     </div>
   </el-card>
 
   <el-card style="position: relative" shadow="hover" :body-style="echo.getCardBodyStyle">
-    <span>Edgewise direction:</span>
+    <b>Edgewise direction:</b>
     <div class="yanbian-bgc">
       <input  type="radio" name="HuggingSideDir" id="HuggingSideDir0" :value="4" class="yb0" @click="onYBChanged" :checked="store.HuggingSideDir === 4">
       <input  type="radio" name="HuggingSideDir" id="HuggingSideDir1" :value="1" class="yb1" @click="onYBChanged" :checked="store.HuggingSideDir === 1">
@@ -39,16 +40,16 @@
   <el-card shadow="hover" :body-style="echo.calcCardPadding">
     <ul class="desc">
       <li>
-        <div><span>A rotarod degree：</span> <span>{{echo.aAngle}}°</span></div>
-        <div><span>B rotarod degree：</span> <span>{{echo.bAngle}}°</span></div>
-        <div><span>Front position：</span> <span>{{echo.frontCarAngle}}°</span></div>
-        <div><span>Rear Position：</span> <span>{{echo.rearCarAngle}}°</span></div>
+        <div><span>A-degree：</span> <span>{{echo.aAngle}}°</span></div>
+        <div><span>B-degree：</span> <span>{{echo.bAngle}}°</span></div>
+        <div><span>F-position：</span> <span>{{echo.frontCarAngle}}°</span></div>
+        <div><span>R-position：</span> <span>{{echo.rearCarAngle}}°</span></div>
       </li>
       <li>
-        <div><span>Left ultrasonic：</span> <span>{{echo.leftCollisionDis}}&nbsp;mm</span></div>
-        <div><span>Right ultrasonic：</span> <span>{{echo.rightCollisionDis}}&nbsp;mm</span></div>
-        <div><span>Algorithm heigh：</span> <span>{{echo.abstacleHight}}&nbsp;mm</span></div>
-        <div><span>Algorithm distance：</span> <span>{{echo.abstacleDis}}&nbsp;mm</span></div>
+        <div><span>L-ultrasonic：</span> <span>{{echo.leftCollisionDis}}&nbsp;mm</span></div>
+        <div><span>R-ultrasonic：</span> <span>{{echo.rightCollisionDis}}&nbsp;mm</span></div>
+        <div><span>ALGO-HT</span> <span>{{echo.abstacleHight}}&nbsp;mm</span></div>
+        <div><span>ALGO-DIST</span> <span>{{echo.abstacleDis}}&nbsp;mm</span></div>
       </li>
       <li>
         <div><span> Battery：</span> <span>{{echo.betteryLevel}}&nbsp;% </span></div>
@@ -87,107 +88,115 @@ const onYBChanged = (event) => {
   position: relative;
   .ss1 {
     position: absolute;
-    left: 62px;
-    top: 0;
+    left: 25px;
+    top: -30px;
     color: blue;
   }
   .ss2 {
     position: absolute;
-    left: 103px;
-    top: 3px;
+    left: 75px;
+    top: -25px;
     color: #1684fc;
   }
   .ss3 {
     position: absolute;
-    left: 46px;
-    top: 38px;
+    left: 5px;
+    top: 10px;
     color: #1684fc;
   }
   .ss4 {
     position: absolute;
-    left: 140px;
-    top: 62px;
+    left: 100px;
+    top: 60px;
     color: #1684fc;
   }
   .ss5 {
     position: absolute;
-    right: 62px;
-    top: 0;
+    right: 22px;
+    top: -30px;
     color: #1684fc;
   }
   .ss6 {
     position: absolute;
-    right: 104px;
-    top: 4px;
+    right: 75px;
+    top: -25px;
     color: #1684fc;
   }
   .ss7 {
     position: absolute;
-    right: 40px;
-    top: 34px;
+    right: 5px;
+    top: 10px;
     color: #1684fc;
   }
   .ss8 {
     position: absolute;
-    right: 142px;
+    right: 100px;
     top: 60px;
     color: #1684fc;
   }
   .ss9 {
     position: absolute;
-    left: 38px;
-    bottom: 25px;
+    left: 10px;
+    bottom: 10px;
     color: #1684fc;
   }
   .ss10 {
     position: absolute;
-    left: 80px;
-    bottom: 0;
+    left: 50px;
+    bottom: -15px;
     color: #1684fc;
   }
   .ss11 {
     position: absolute;
-    right: 41px;
-    bottom: 25px;
+    right: 10px;
+    bottom: 10px;
     color: #1684fc;
   }
   .ss12 {
     position: absolute;
-    right: 84px;
-    bottom: 0;
+    right: 50px;
+    bottom: -15px;
     color: #1684fc;
   }
   &-text-left {
     font-size: 20px;
     color: #d74d4d;
     position: absolute;
-    top: 77px;
-    left: 42px;
+    top: 50px;
+    left: 10px;
   }
   &-text-right {
     font-size: 20px;
     color: #d74d4d;
     position: absolute;
-    top: 77px;
-    right: 50px;
+    top: 50px;
+    right: 10px;
   }
 }
-.top-banner {
-  height: 140px;
+.banner {
+  height: 280px;
   width: 100%;
-  background-image: url("../../assets/topBanner.png");
+  background-image: url("../../assets/banner.png");
   background-repeat: no-repeat;
   background-position: top left;
-  background-size: 100% 140px;
+  background-size: 100% 280px;
 }
-.bottom-banner {
-  height: 140px;
-  width: 100%;
-  background-image: url("../../assets/bottomBanner.png");
-  background-repeat: no-repeat;
-  background-position: -8px 8px;
-  background-size: 100% 140px;
-}
+// .top-banner {
+//   height: 140px;
+//   width: 100%;
+//   background-image: url("../../assets/topBanner.png");
+//   background-repeat: no-repeat;
+//   background-position: top left;
+//   background-size: 100% 140px;
+// }
+// .bottom-banner {
+//   height: 140px;
+//   width: 100%;
+//   background-image: url("../../assets/bottomBanner.png");
+//   background-repeat: no-repeat;
+//   background-position: -8px 8px;
+//   background-size: 100% 140px;
+// }
 .yanbian-bgc {
   height: 180px;
   width: 100%;

@@ -14,23 +14,23 @@
     </el-space>
     <el-card shadow="hover" :body-style="echo.calcCardPadding">
       <el-space v-spacing-bottom>
-        <span>Algorithm</span>
+        <span>ALGO</span>
         <el-switch v-model="store.cameraPNCLAlgorithmEn" :active-value="1" :inactive-value="0" />
-        <span v-spacing-left="2">Camera</span>
+        <span v-spacing-left="1">CAM</span>
         <el-switch v-model="store.cameraRGBAlgorithmEn" :active-value="1" :inactive-value="0" />
-        <span v-spacing-left="2">Rear module connection</span>
+        <span v-spacing-left="1">R-CONN</span>
         <el-switch v-model="store.loraCtrl" :active-value="1" :inactive-value="0"></el-switch>
       </el-space>
-      <el-space :size="10">
-        <el-radio-group v-model="echo.verticalMode" style="margin-right: 5px" @change="store.onVerticalModeChanged">
-          <el-radio :label="1"><span style="font-size: 16px">Vertical mode</span></el-radio>
-          <el-radio :label="0"><span style="font-size: 16px">non-verticality mode</span></el-radio>
+      <div style="display: flex;justify-content: space-between;align-items: center;">
+        <el-radio-group v-model="echo.verticalMode" @change="store.onVerticalModeChanged">
+          <el-radio :label="1">Vertical</el-radio>
+          <el-radio :label="0">non-verticality</el-radio>
         </el-radio-group>
         <div class="radio-group">
           <input type="radio" id="0x09" value="9" name="carRunMode" v-model.number="echo.carRunMode" @click="store.onCarRunModeChanged">
-          <label for="0x09">Calibration</label>
+          <label for="0x09">CAL</label>
         </div>
-      </el-space>
+      </div>
     </el-card>
   </div>
 </template>
@@ -55,6 +55,7 @@ const onResetClk = () => {
 .radio-group {
   position: relative;
   line-height: 30px;
+  padding-right: 10px;
   input[type="radio"] {
     height: 22px;
     width: 22px;

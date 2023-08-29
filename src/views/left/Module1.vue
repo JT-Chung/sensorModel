@@ -14,39 +14,37 @@
     <div v-spacing-bottom>
       <el-slider v-model="carVelocity" :max="8000" :step="500" @change="store.onCarVelocityChanged"/>
     </div>
-    <div>
-      <el-space>
-        <div>
-          <span style="font-size: 20px">Forward:</span>
-          <el-icon size="20" style="vertical-align: bottom;padding-left: 5px" :color="echo.rockerDir === 1 ? '#13950a' : '#d23535'">
+    <div style="display: flex; justify-content: space-between;">
+        <div style="display: flex; flex-direction: row;align-items: center; gap: 3px;">
+          <span>Fwd:</span>
+          <el-icon size="20" :color="echo.rockerDir === 1 ? '#13950a' : '#d23535'">
             <CircleCheckFilled />
           </el-icon>
         </div>
-        <div>
-          <span style="font-size: 20px">Retreat:</span>
-          <el-icon size="20" style="vertical-align: bottom;padding-left: 5px" :color="echo.rockerDir === 2 ? '#13950a' : '#d23535'">
+        <div style="display: flex; flex-direction: row;align-items: center; gap: 3px;">
+          <span>Retreat:</span>
+          <el-icon size="20" :color="echo.rockerDir === 2 ? '#13950a' : '#d23535'">
             <CircleCheckFilled />
           </el-icon>
         </div>
-        <div>
-          <span style="font-size: 20px">Left:</span>
-          <el-icon size="20" style="vertical-align: bottom;padding-left: 5px" :color="echo.rockerDir === 3 ? '#13950a' : '#d23535'">
+        <div style="display: flex; flex-direction: row;align-items: center; gap: 3px;">
+          <span>L:</span>
+          <el-icon size="20" :color="echo.rockerDir === 3 ? '#13950a' : '#d23535'">
             <CircleCheckFilled />
           </el-icon>
         </div>
-        <div>
-          <span style="font-size: 20px">Right:</span>
-          <el-icon size="20" style="vertical-align: bottom;padding-left: 5px" :color="echo.rockerDir === 4 ? '#13950a' : '#d23535'">
+        <div style="display: flex; flex-direction: row;align-items: center; gap: 3px;">
+          <span>R:</span>
+          <el-icon size="20" :color="echo.rockerDir === 4 ? '#13950a' : '#d23535'">
             <CircleCheckFilled />
           </el-icon>
         </div>
-        <div>
-          <span style="font-size: 20px">Stop:</span>
-          <el-icon size="20" style="vertical-align: bottom;padding-left: 5px" :color="echo.rockerDir === 0 ? '#13950a' : '#d23535'">
+        <div style="display: flex; flex-direction: row;align-items: center; gap: 3px;">
+          <span>Stop:</span>
+          <el-icon size="20" :color="echo.rockerDir === 0 ? '#13950a' : '#d23535'">
             <CircleCheckFilled />
           </el-icon>
         </div>
-      </el-space>
     </div>
   </el-card>
 </template>
