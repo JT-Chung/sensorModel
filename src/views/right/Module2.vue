@@ -22,7 +22,7 @@
       </div>
       <el-space v-spacing-bottom alignment="left">
         <div>
-          <span>延边距离(mm)：</span>
+          <span>延边距离(m)：</span>
           <el-input-number v-model="store.HuggingSideDis" placeholder="请输入距离" :step="echo.accuracy" :min="0" @blur="onBLur"/>
         </div>
       </el-space>

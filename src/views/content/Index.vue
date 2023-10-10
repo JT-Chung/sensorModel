@@ -17,10 +17,11 @@
 
       <b class="sensor-status-text-left">{{echo.ArmWheelLeftAngle}}度</b>
       <b class="sensor-status-text-right">{{echo.ArmWheelRightAngle}}度</b>
-      <div class="top-banner">
+      <div class="banner"></div>
+      <!-- <div class="top-banner">
       </div>
       <div class="bottom-banner">
-      </div>
+      </div> -->
     </div>
   </el-card>
 
