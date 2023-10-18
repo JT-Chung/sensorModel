@@ -23,7 +23,7 @@
         </div>
       </div>
       <div style="display: flex; flex-wrap: nowrap;align-items: center;">
-        <span style="white-space: nowrap;">Edgewise distance(mm)：</span>
+        <span style="white-space: nowrap;">Edgewise distance(cm)：</span>
         <el-input-number style="width: 140px;" v-model="store.HuggingSideDis" placeholder="请输入距离" :step="echo.accuracy" :min="0" @blur="onBLur"/>
       </div>
     </div>
@@ -34,7 +34,7 @@
       </div>
       <el-space alignment="left" direction="vertical">
         <el-space>
-          <span class="label">Horizontal distance(mm):</span>
+          <span class="label">Horizontal distance(cm):</span>
           <el-input-number style="margin-left: 0px" v-model="store.autoMoveLevelDis" placeholder="请输入" :step="echo.accuracy" :min="0"/>
         </el-space>
         <el-space>
